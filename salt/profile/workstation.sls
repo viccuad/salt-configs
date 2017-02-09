@@ -1,4 +1,5 @@
 include:
+  - users.sudo
   - users
   - profile.dotfiles
 

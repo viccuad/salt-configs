@@ -9,5 +9,7 @@ users:
     email: viccuad@localhost.{{ hostname }}
     user_dir_mode: 755
     sudouser: true
+    sudo_rules:
+      - ALL=(ALL) NOPASSWD:ALL
     groups:
       - users
