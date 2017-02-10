@@ -4,3 +4,4 @@ include:
   - profile.dotfiles.tmux
   - profile.dotfiles.vim
   - profile.dotfiles.beets
+  - profile.dotfiles.debuggers
