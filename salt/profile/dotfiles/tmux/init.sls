@@ -7,6 +7,7 @@ tmux_recurse_files:
     - file_mode: 655
     - dir_mode: 755
     - include_empty: True
+
 tmux_zshaliases:
   file.append:
     - name: /home/vic/.zsh/aliases.zsh
