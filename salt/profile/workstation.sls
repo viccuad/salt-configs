@@ -10,3 +10,4 @@ workstation_packages:
       - build-essential
       - grep
       - htop
+      - silversearcher-ag
