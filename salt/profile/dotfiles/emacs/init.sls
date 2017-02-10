@@ -49,10 +49,16 @@ emacs_install:
       - shellcheck
       - python3-bashate
       # python layer:
-      - flake8
+        # - flake8 using pylint instead, because it is broken for now
+      - pylint
+      - pylint3
+      - python-pylint-* # plugins TODO
+      - python3-pylint-* # plugins TODO
       - python-hacking
       - python3-hacking
       - hy
+      - yapf
+      - yapf3
       # - autoflake missing in Debian
       # latex layer:
       - pandoc
