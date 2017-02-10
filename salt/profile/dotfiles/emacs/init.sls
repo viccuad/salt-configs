@@ -7,6 +7,7 @@ emacs_recurse_files:
     - file_mode: 655
     - dir_mode: 755
     - include_empty: True
+    - exclude_pat: .gitignore
 
 emacs_zshenv_replace_editor:
   file.replace:

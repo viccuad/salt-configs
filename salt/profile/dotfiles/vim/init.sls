@@ -7,6 +7,7 @@ vim_recurse_files:
     - file_mode: 655
     - dir_mode: 755
     - include_empty: True
+    - exclude_pat: .gitignore
 
 vim_zshenv:
   file.append:
