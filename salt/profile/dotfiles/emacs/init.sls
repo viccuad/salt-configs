@@ -34,6 +34,10 @@ emacs_install:
       - emacs24
       - emacs-goodies-el
       - xclip
+      - aspell
+      - aspell-en
+      - aspell-de
+      - aspell-es
       # markdown layer:
       - markdown
       # c/c++ layer:

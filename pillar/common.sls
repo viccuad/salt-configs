@@ -4,6 +4,7 @@ include:
 locale:
   present:
     - "en_US.UTF-8"
+    - "en_GB.UTF-8"
     - "es_ES.UTF-8"
   default:
     name: 'en_US.UTF-8' # Note: On debian systems don't write the
