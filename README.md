@@ -1,3 +1,15 @@
+# Dotfiles #
+
+If you don't want to dive into salt and just want to extract some dotfile config
+from here, look at:
+- `salt/profile/dotfiles/<whatever>/files/*`: a file tree that you could put
+  right on to ``~`
+- `salt/profile/dotfiles/<whatever>/files/init.sls`: salt state to install
+  dependencies, append environmental variables, aliases, etc.
+
+
+# Salt code pattern #
+
 Debug salt on your client (the machine running the salt-minion) via:
 
  ```salt-call state.apply -l info test=True```
