@@ -4,6 +4,7 @@ include:
   - profile.dotfiles.tmux
   - profile.dotfiles.vim
   - profile.dotfiles.gnupg
+  - profile.dotfiles.git
   - profile.dotfiles.beets
   - profile.dotfiles.debuggers
   - profile.dotfiles.nvim
