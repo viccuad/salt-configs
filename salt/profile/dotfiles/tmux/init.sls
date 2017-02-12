@@ -1,9 +1,12 @@
+{% for user, details in pillar.get('users', {}).items() %}
+{% if 'users' in details['groups'] %}
+
 tmux_recurse_files:
   file.recurse:
-    - name: /home/vic/
+    - name: /home/{{ user }}/
     - source: salt://{{ slspath }}/files/
-    - user: vic
-    - group: vic
+    - user: {{ user }}
+    - group: {{ user }}
     - file_mode: 655
     - dir_mode: 755
     - include_empty: True
@@ -11,7 +14,7 @@ tmux_recurse_files:
 
 tmux_zshaliases:
   file.append:
-    - name: /home/vic/.zsh/aliases.zsh
+    - name: /home/{{ user }}/.zsh/aliases.zsh
     - text: |
             # tmux aliases:
             alias tmuxa='tmux attach -t'
@@ -24,3 +27,6 @@ tmux_install:
       - tmux
       - ncurses-term # for the tmux-256color terminfo
       - xsel
+
+{% endif %}
+{% endfor %}

@@ -1,3 +1,6 @@
+{% for user, details in pillar.get('users', {}).items() %}
+{% if 'users' in details['groups'] %}
+
 zsh_recurse_files:
   file.recurse:
     - name: /home/vic/
@@ -18,3 +21,6 @@ zsh_install:
       - trash-cli
       - zsh-syntax-highlighting
       - autojump
+
+{% endif %}
+{% endfor %}

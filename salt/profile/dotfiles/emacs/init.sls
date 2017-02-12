@@ -1,9 +1,12 @@
+{% for user, details in pillar.get('users', {}).items() %}
+{% if 'users' in details['groups'] %}
+
 emacs_recurse_files:
   file.recurse:
-    - name: /home/vic/
+    - name: /home/{{ user }}/
     - source: salt://{{ slspath }}/files/
-    - user: vic
-    - group: vic
+    - user: {{ user }}
+    - group: {{ user }}
     - file_mode: 655
     - dir_mode: 755
     - include_empty: True
@@ -11,20 +14,20 @@ emacs_recurse_files:
 
 emacs_zshenv_replace_editor:
   file.replace:
-    - name: /home/vic/.zshenv
+    - name: /home/{{ user }}/.zshenv
     - pattern: EDITOR='vim'
     - repl: EDITOR='emacsclient -nw'
 
 emacs_zshenv:
   file.append:
-    - name: /home/vic/.zshenv
+    - name: /home/{{ user }}/.zshenv
     - text: |
             # emacs: make emacsclient start a server if there isn't one before:
             export ALTERNATE_EDITOR=""
 
 emacs_zshaliases:
   file.append:
-    - name: /home/vic/.zsh/aliases.zsh
+    - name: /home/{{ user }}/.zsh/aliases.zsh
     - text: |
             # emacs aliases:
             alias sm="TERM=xterm-256color emacsclient -t -c"
@@ -67,7 +70,10 @@ emacs_install:
 emacs_clone_spacemacs:
   git.latest:
     - name: https://github.com/syl20bnr/spacemacs.git
-    - target: /home/vic/.emacs.d
-    - user: vic
+    - target: /home/{{ user }}/.emacs.d
+    - user: {{ user }}
     - require:
       - pkg: git
+
+{% endif %}
+{% endfor %}

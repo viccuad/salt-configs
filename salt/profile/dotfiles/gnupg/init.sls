@@ -1,9 +1,12 @@
+{% for user, details in pillar.get('users', {}).items() %}
+{% if 'users' in details['groups'] %}
+
 gnupg_recurse_files:
   file.recurse:
-    - name: /home/vic/
+    - name: /home/{{ user }}/
     - source: salt://{{ slspath }}/files/
-    - user: vic
-    - group: vic
+    - user: {{ user }}
+    - group: {{ user }}
     - file_mode: 655
     - dir_mode: 755
     - include_empty: True
@@ -11,7 +14,7 @@ gnupg_recurse_files:
 
 gnupg_zshenv:
   file.append:
-    - name: /home/vic/.zshenv
+    - name: /home/{{ user }}/.zshenv
     - text: |
             # From gpg-agent manual (for gpg 2.1)
             GPG_TTY=$(tty)
@@ -26,3 +29,5 @@ gnupg_install:
   pkg.installed:
     - names:
       - gnupg-curl # support for HKPS keyservers
+{% endif %}
+{% endfor %}
