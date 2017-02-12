@@ -28,7 +28,6 @@ gnupg_zshenv:
 gnupg_install:
   pkg.installed:
     - names:
-      - gnupg-curl # support for HKPS keyservers
       - dirmngr
       - tor
       - hopenpgp-tools # check for problems in your key
