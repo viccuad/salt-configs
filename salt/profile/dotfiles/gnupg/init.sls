@@ -29,6 +29,9 @@ gnupg_install:
   pkg.installed:
     - names:
       - gnupg-curl # support for HKPS keyservers
+      - dirmngr
+      - tor
+      - hopenpgp-tools # check for problems in your key
 
 gnupg_install_hkps_ca:
   # verify ca with https://sks-keyservers.net/verify_tls.php
@@ -36,5 +39,6 @@ gnupg_install_hkps_ca:
     - name: /usr/share/gnupg/sks-keyservers.netCA.pem
     - source: https://sks-keyservers.net/sks-keyservers.netCA.pem
     - source_hash: sha256=d14057d20ebfe26bbe1049896994f9c159b46ea0fa552d71dda366b2ec056f38
+
 {% endif %}
 {% endfor %}
