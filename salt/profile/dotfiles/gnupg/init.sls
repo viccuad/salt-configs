@@ -7,8 +7,8 @@ gnupg_recurse_files:
     - source: salt://{{ slspath }}/files/
     - user: {{ user }}
     - group: {{ user }}
-    - file_mode: 655
-    - dir_mode: 755
+    - file_mode: 600
+    - dir_mode: 700
     - include_empty: True
     - exclude_pat: .gitignore
 
