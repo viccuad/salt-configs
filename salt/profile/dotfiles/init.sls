@@ -6,3 +6,4 @@ include:
   - profile.dotfiles.gnupg
   - profile.dotfiles.beets
   - profile.dotfiles.debuggers
+  - profile.dotfiles.nvim
