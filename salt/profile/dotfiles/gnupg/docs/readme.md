@@ -1,3 +1,7 @@
+# Please follow best practices
+https://riseup.net/en/security/message-security/openpgp/best-practices
+
+
 # Rationale of sharing this info
 
 There is no security risk on sharing gpg.conf, scdaemon.conf and gpg-agent.conf.
