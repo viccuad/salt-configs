@@ -33,6 +33,16 @@ gnupg_install:
       - tor
       - hopenpgp-tools # check for problems in your key
 
+gnupg_agent_sockets:
+  # ensure that gpg-agent and dirmngr are always available (gpg 2.1)
+  cmd.run:
+    - names:
+      - systemctl --user enable gpg-agent.socket
+      - systemctl --user enable gpg-agent-ssh.socket
+      - systemctl --user enable gpg-agent-restricted.socket
+      - systemctl --user enable dirmngr.socket
+    - runas: {{ user }}
+
 gnupg_install_hkps_ca:
   # verify ca with https://sks-keyservers.net/verify_tls.php
   file.managed:
