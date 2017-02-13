@@ -31,3 +31,19 @@ This pattern is a best-practices one for Puppet, see [1] and [2].
 
 [1]: https://docs.puppet.com/pe/2016.4/r_n_p_intro.html
 [2]: https://puppet.com/presentations/designing-puppet-rolesprofiles-pattern
+
+
+# Building your own Debian Stretch image #
+
+Until Debian Stretch is officially released, you can build your own Stretch lxc
+image (following the official scripts) and use it for the Vagrantfile.
+
+Inside this repo, do:
+
+```
+$ git clone https://anonscm.debian.org/git/cloud/debian-vm-templates.git
+$ sudo make -C debian-vm-templates/custom-lxc-vagrant stretch
+$ cp debian-vm-templates/custom-lxc-vagrant/stretch.box .
+$ vagrant up
+$ rm stretch.box
+```
