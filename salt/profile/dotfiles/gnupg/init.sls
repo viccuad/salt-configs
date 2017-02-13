@@ -28,6 +28,7 @@ gnupg_zshenv:
 gnupg_install:
   pkg.installed:
     - names:
+      - scdaemon
       - dirmngr
       - tor
       - hopenpgp-tools # check for problems in your key
