@@ -56,8 +56,6 @@ emacs_install:
         # - flake8 using pylint instead, because it is broken for now
       - pylint
       - pylint3
-      - python-pylint-* # plugins TODO
-      - python3-pylint-* # plugins TODO
       - python-hacking
       - python3-hacking
       - hy
@@ -66,6 +64,11 @@ emacs_install:
       # - autoflake missing in Debian
       # latex layer:
       - pandoc
+  cmd.run:
+    - names:
+      # python layer:
+      - apt-get -y install python-pylint-*
+      - apt-get -y install python3-pylint-*
 
 emacs_clone_spacemacs:
   git.latest:
