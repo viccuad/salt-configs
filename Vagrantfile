@@ -6,17 +6,19 @@ VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
-  config.vm.provider "virtualbox" do |vb|
-    vb.memory = 1024
-  end
-
-  # config.vm.provider "lxc" do |lxc|
-  #     lxc.customize 'cgroup.memory.limit_in_bytes', '1024M'
+  # config.vm.provider "virtualbox" do |vb|
+  #   vb.memory = 1024
   # end
 
+  config.vm.provider "lxc" do |lxc|
+      lxc.customize 'cgroup.memory.limit_in_bytes', '1024M'
+  end
+
   config.vm.define :workstation do |workstation_config|
-    workstation_config.vm.box = "ubuntu/yakkety64"
+    # workstation_config.vm.box = "ubuntu/yakkety64"
     # workstation_config.vm.box = "debian/jessie64"
+    workstation_config.vm.box = "stretch"
+    workstation_config.vm.box_url = "stretch.box"
     workstation_config.vm.host_name = 'workstation.local'
     workstation_config.vm.synced_folder "salt/", "/srv/salt"
     workstation_config.vm.synced_folder "pillar/", "/srv/pillar"
