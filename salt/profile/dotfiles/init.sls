@@ -8,3 +8,4 @@ include:
   - profile.dotfiles.beets
   - profile.dotfiles.debuggers
   - profile.dotfiles.nvim
+  - profile.dotfiles.signing-party
