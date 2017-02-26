@@ -8,6 +8,11 @@ workstation_packages:
       - htop
       - silversearcher-ag
 
+workstation_sourceslist:
+  file.managed:
+    - name: /etc/apt/sources.list
+    - source: salt://{{ slspath }}/templates/sources.list
+
 include:
   - users.sudo
   - users
