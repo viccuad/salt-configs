@@ -11,3 +11,4 @@ alias ....='cd ../../..'
 
 alias th='trash --verbose'
 alias xdg='xdg-open'
+alias ag='ag --hidden'
