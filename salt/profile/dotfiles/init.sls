@@ -8,5 +8,6 @@ include:
   - profile.dotfiles.pass
   - profile.dotfiles.beets
   - profile.dotfiles.debuggers
+  - profile.dotfiles.lxc
   - profile.dotfiles.nvim
   - profile.dotfiles.signing-party
