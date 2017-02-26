@@ -1,5 +1,7 @@
 pillar_safe_render_error: False
 
+state_aggregate: True
+
 ## Look locally for files
 file_client: local
 
