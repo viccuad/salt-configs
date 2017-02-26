@@ -6,7 +6,7 @@ users:
     uid: 1001
     gid: 1001
     shell: /bin/zsh
-    email: viccuad@localhost.{{ hostname }}
+    email: vic@localhost.{{ hostname }}
     user_dir_mode: 755
     sudouser: true
     sudo_rules:
