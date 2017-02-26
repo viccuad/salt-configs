@@ -1,5 +1,6 @@
 export EDITOR='vim'
 export SHELL='/bin/zsh'
-export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
+export PATH="$PATH:$HOME/bin"
+export MANPATH="/usr/local/man:/usr/local/share/man:/usr/share/man"
 
 export CLICOLOR=true
