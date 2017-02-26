@@ -12,4 +12,23 @@ users:
     sudo_rules:
       - ALL=(ALL) NOPASSWD:ALL
     groups:
+      - vic
       - users
+      - tty
+      - mail
+      - sudo
+      - dialout
+      - cdrom
+      - floppy
+      - audio
+      - dip
+      - video
+      - plugdev
+      - netdev
+      - lpadmin
+      - scanner
+      - bluetooth
+      - kvm
+      - libvirt
+      - vboxusers
+      - docker
