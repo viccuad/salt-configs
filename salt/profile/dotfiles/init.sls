@@ -5,6 +5,7 @@ include:
   - profile.dotfiles.vim
   - profile.dotfiles.gnupg
   - profile.dotfiles.git
+  - profile.dotfiles.pass
   - profile.dotfiles.beets
   - profile.dotfiles.debuggers
   - profile.dotfiles.nvim
