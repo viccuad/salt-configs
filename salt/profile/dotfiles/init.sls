@@ -9,5 +9,6 @@ include:
   - profile.dotfiles.beets
   - profile.dotfiles.debuggers
   - profile.dotfiles.lxc
+  - profile.dotfiles.vagrant
   - profile.dotfiles.nvim
   - profile.dotfiles.signing-party
