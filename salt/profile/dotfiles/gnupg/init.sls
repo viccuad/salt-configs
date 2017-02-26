@@ -11,6 +11,7 @@ gnupg_recurse_files:
     - dir_mode: 700
     - include_empty: True
     - exclude_pat: .gitignore
+    - template: jinja
 
 gnupg_zshenv:
   file.append:
@@ -33,15 +34,37 @@ gnupg_install:
       - tor
       - hopenpgp-tools # check for problems in your key
 
-gnupg_agent_sockets:
-  # ensure that gpg-agent and dirmngr are always available (gpg 2.1)
-  cmd.run:
-    - names:
-      - systemctl --user enable gpg-agent.socket
-      - systemctl --user enable gpg-agent-ssh.socket
-      - systemctl --user enable gpg-agent-restricted.socket
-      - systemctl --user enable dirmngr.socket
-    - runas: {{ user }}
+gnupg_enable_gpg-agent_socket:
+  file.symlink:
+    - name: /home/{{ user }}/.config/systemd/user/sockets.target.wants/gpg-agent.socket
+    - target: /usr/lib/systemd/user/gpg-agent.socket
+    - user: {{ user }}
+    - group: {{ user }}
+    - makedirs: True
+
+gnupg_enable_gpg-agent-ssh_socket:
+  file.symlink:
+    - name: /home/{{ user }}/.config/systemd/user/sockets.target.wants/gpg-agent-ssh.socket
+    - target: /usr/lib/systemd/user/gpg-agent-ssh.socket
+    - user: {{ user }}
+    - group: {{ user }}
+    - makedirs: True
+
+gnupg_enable_gpg-agent-restricted_socket:
+  file.symlink:
+    - name: /home/{{ user }}/.config/systemd/user/sockets.target.wants/gpg-agent-restricted.socket
+    - target: /usr/lib/systemd/user/gpg-agent-restricted.socket
+    - user: {{ user }}
+    - group: {{ user }}
+    - makedirs: True
+
+gnupg_enable_dirmngr_socket:
+  file.symlink:
+    - name: /home/{{ user }}/.config/systemd/user/sockets.target.wants/dirmngr.socket
+    - target: /usr/lib/systemd/user/dirmngr.socket
+    - user: {{ user }}
+    - group: {{ user }}
+    - makedirs: True
 
 gnupg_install_hkps_ca:
   # verify ca with https://sks-keyservers.net/verify_tls.php
