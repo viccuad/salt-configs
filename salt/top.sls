@@ -4,3 +4,6 @@ base:
   'roles:workstation':
     - match: grain
     - profile.workstation
+  'roles:laptop':
+    - match: grain
+    - profile.laptop
