@@ -73,5 +73,27 @@ gnupg_install_hkps_ca:
     - source: https://sks-keyservers.net/sks-keyservers.netCA.pem
     - source_hash: sha256=0666ee848e03a48f3ea7bb008dbe9d63dfde280af82fb4412a04bf4e24cab36b
 
+gnupg_forwarding_ssh:
+  file.append:
+    - name: /home/{{ user }}/.ssh/config
+    - text: |
+            # gpg forwarding over ssh:
+            Host gpgtunnel
+            HostName server.domain
+            RemoteForward /home/{{ user }}/.gnupg/S.gpg-agent /home/{{ user }}/.gnupg/S.gpg-agent.extra
+
+gnupg_forwarding_sshd:
+  file.append:
+    - name: /etc/ssh/sshd_config
+    - text: |
+            # for gpg forwarding over ssh. Enable automatic removal of stale
+            # sockets when connecting to the remote machine. Otherwise you will
+            # first have to remove the socket on the remote machine before
+            # forwarding works:
+            StreamLocalBindUnlink yes
+    # only if server installed:
+    - onlyif:
+      - dpkg -s openssh-server
+
 {% endif %}
 {% endfor %}
