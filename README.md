@@ -1,5 +1,6 @@
-Bunch of salt config files for setting up my workstation/laptop/desktop
-environment/etc.
+The idea is to apply the Puppet code pattern to create salt config files to
+setup from a GUIless workstation, to laptop configs, Desktop Environments,
+and later add NAS, router, media servers, Kodi, etc.
 
 # Dotfiles #
 
