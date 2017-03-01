@@ -7,3 +7,6 @@ base:
   'roles:laptop':
     - match: grain
     - profile.laptop
+  'roles:desktopenv':
+    - match: grain
+    - profile.desktopenv
