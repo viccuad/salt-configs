@@ -10,5 +10,6 @@ include:
   - profile.dotfiles.debuggers
   - profile.dotfiles.lxc
   - profile.dotfiles.vagrant
+  - profile.dotfiles.debian
   - profile.dotfiles.nvim
   - profile.dotfiles.signing-party
