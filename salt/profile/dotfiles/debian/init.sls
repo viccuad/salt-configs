@@ -94,16 +94,15 @@ debian_setup_autopkgtest:
   cmd.run:
     - names:
       - debci setup
-  lxc_sudoers:
-    file.append:
-      - name: /etc/sudoers.d/lxc
-      - makedirs: True
-        # TODO add rules with user's formula sudo rules, or with visudo directly
-        # run lxc commands as root, preserving environment:
-      - text: |
-              {{ user }}  ALL = NOPASSWD:SETENV: /usr/bin/lxc-*
-      - require:
-        - sls: profile.dotfiles.lxc
+  file.append:
+    - name: /etc/sudoers.d/lxc
+    - makedirs: True
+      # TODO add rules with user's formula sudo rules, or with visudo directly
+      # run lxc commands as root, preserving environment:
+    - text: |
+            {{ user }}  ALL = NOPASSWD:SETENV: /usr/bin/lxc-*
+    - require:
+      - sls: profile.dotfiles.lxc
 
 debian_gitconfig:
   file.append:
