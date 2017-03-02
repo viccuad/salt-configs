@@ -31,11 +31,10 @@ mail_install:
       - sls: profile.dotfiles.emacs
 
 mail_install_msmtpq:
-  # file.managed:
-  archive.extracted:
+  cmd.run:
+    - name: "gunzip -c /usr/share/doc/msmtp/examples/msmtpq/msmtpq.gz > /home/{{ user }}/bin/msmtpq"
+  file.managed:
     - name: /home/{{ user }}/bin/msmtpq
-    - source: /usr/share/doc/msmtp/examples/msmtpq/msmtpq.gz
-    - archive_format: zip
     - mode: 744
     - user: {{ user }}
     - group: {{ user }}
