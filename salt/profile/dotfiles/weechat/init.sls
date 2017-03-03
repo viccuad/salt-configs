@@ -19,10 +19,21 @@ weechat_install:
       - weechat
       - weechat-plugins
       - weechat-scripts
+      - logrotate
       # for matrix plugin:
       - lua-cjson
       # for notifications:
       - libnotify-bin
+
+weechat_enable_logrotate:
+  file.symlink:
+    - name: /home/{{ user }}/.config/systemd/user/default.target.wants/weechat-rotate.service
+    - target: /home/{{ user }}/.config/systemd/user/weechat-rotate.service
+    - user: {{ user }}
+    - group: {{ user }}
+    - makedirs: True
+    - require:
+      - pkg: logrotate
 
 {% endif %}
 {% endfor %}
