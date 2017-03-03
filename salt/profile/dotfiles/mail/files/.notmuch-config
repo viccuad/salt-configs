@@ -11,7 +11,7 @@
 # configured here named ".notmuch".
 #
 [database]
-path=/home/vic/Maildir
+path=/home/vic/.mail
 
 # User configuration
 #
