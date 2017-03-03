@@ -16,6 +16,7 @@ debuggers_install:
   pkg.installed:
     - names:
       - gdb
+      - gdb-multiarch
       - rr
       - ltrace
       - strace
