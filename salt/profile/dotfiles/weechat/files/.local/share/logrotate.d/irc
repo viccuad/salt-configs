@@ -1,8 +1,8 @@
-# weechat logrorate file
+~/.weechat/logs/irc.server.freenode.*
+~/.weechat/logs/irc.freenode.*
+{
 compress
 missingok
 notifempty
 copytruncate
-
-# Log files.
-"~/.weechat/logs/irc.freenode.**log" {}
+}

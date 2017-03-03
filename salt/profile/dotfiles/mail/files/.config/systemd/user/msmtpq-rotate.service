@@ -3,7 +3,7 @@ Description=Logrotate msmtpq's logs
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/logrotate -s %t/logrotate.state  %h/.local/share/logrotate.d/msmtpq -v
+ExecStart=/usr/sbin/logrotate -s %t/logrotate.state  %h/.local/share/logrotate.d/msmtpq -v
 
 [Install]
 WantedBy=default.target
