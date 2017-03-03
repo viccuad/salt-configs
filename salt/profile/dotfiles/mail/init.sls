@@ -10,8 +10,8 @@ mail_recurse_files:
     - source: salt://{{ slspath }}/files/
     - user: {{ user }}
     - group: {{ user }}
-    - file_mode: 655
-    - dir_mode: 755
+    - file_mode: keep
+    # - dir_mode: keep
     - include_empty: True
     - exclude_pat: .gitignore
     - template: jinja
@@ -29,6 +29,13 @@ mail_install:
       - afew
     - require:
       - sls: profile.dotfiles.emacs
+
+mail_install_checkmail:
+  file.managed:
+    - name: /home/{{ user }}/bin/checkmail.sh
+    - mode: 744
+    - user: {{ user }}
+    - group: {{ user }}
 
 mail_install_msmtpq:
   cmd.run:
