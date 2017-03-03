@@ -27,6 +27,7 @@ mail_install:
       - python-notmuch
       - python3-notmuch
       - afew
+      - logrotate
     - require:
       - sls: profile.dotfiles.emacs
 
