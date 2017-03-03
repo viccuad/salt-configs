@@ -36,7 +36,7 @@ emacs_zshaliases:
 emacs_install:
   pkg.installed:
     - names:
-      - emacs24
+      - emacs25
       - emacs-goodies-el
       - xclip
       - aspell
