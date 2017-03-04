@@ -46,9 +46,13 @@ emacs_install:
       # markdown layer:
       - markdown
       # c/c++ layer:
+      - gcc
+      - cppcheck
       - cscope
-      # for ggtags (helm-ggtags):
-      - global
+      - clang
+      - clang-format
+      - clang-tidy
+      - global # for ggtags (helm-ggtags):
       - exuberant-ctags
       # shell layer:
       - shellcheck
