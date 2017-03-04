@@ -13,3 +13,4 @@
 !.gnupg/scdaemon.conf
 !.gnupg/sshcontrol
 !.gnupg/dirmngr.conf
+!bin/remote-gpg
