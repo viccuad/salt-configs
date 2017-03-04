@@ -21,6 +21,8 @@ debuggers_install:
       - ltrace
       - strace
       - valgrind
+      - tcpdump
+      - net-tools
 
 {% endif %}
 {% endfor %}
