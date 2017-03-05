@@ -32,6 +32,16 @@ mail_install:
     - require:
       - sls: profile.dotfiles.emacs
 
+mail_install_certificate:
+  cmd.run:
+    - name: openssl s_client -connect mail.gandi.net:993 -showcerts 2>&1 < /dev/null | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sed -ne '1,/-END CERTIFICATE-/p' > /home/{{ user }}//.cert/webmail.gandi.net.pem
+  file.managed:
+    - name: /home/{{ user }}/.cert/webmail.gandi.net.pem
+    - mode: 600
+    - user: {{ user }}
+    - group: {{ user }}
+    - source_hash: sha256=b27eef8a5ea176df292599ac50d7aa3dd19ec5f6ef02c3b76ead3f478af6c2d4
+
 mail_install_checkmail:
   file.managed:
     - name: /home/{{ user }}/bin/checkmail.sh
