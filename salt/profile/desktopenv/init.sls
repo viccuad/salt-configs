@@ -20,6 +20,7 @@ desktopenv_install:
       - gnome-extensions
       - vrms
       - pinentry-gnome3
+      - yubioath-desktop
   cmd.run:
     - names:
       - yubikey-*
