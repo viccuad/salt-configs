@@ -21,12 +21,13 @@ mail_install:
     - names:
       - notmuch
       - isync #this is mbsync
-      - elpa-notmuch
+      # - elpa-notmuch
       - msmtp
       - netcat # for msmtp connection testing
       - python-notmuch
       - python3-notmuch
       - afew
+      - dbacl # for afew --update-reference
       - logrotate
     - require:
       - sls: profile.dotfiles.emacs
