@@ -1,6 +1,7 @@
 include:
   - profile.desktopenv.fonts
   - profile.desktopenv.icons
+  - profile.desktopenv.themes
 desktopenv_install:
   pkg.installed:
     - names:
