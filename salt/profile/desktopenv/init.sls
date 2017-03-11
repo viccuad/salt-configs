@@ -1,3 +1,5 @@
+include:
+  - profile.desktopenv.fonts
 desktopenv_install:
   pkg.installed:
     - names:
