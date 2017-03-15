@@ -11,7 +11,7 @@ lxc_install:
 lxc_config_lxc-net:
  file.managed:
     - name: /etc/default/lxc-net
-    - source: salt://{{ slspath }}/templates/lxc-net
+    - source: salt://{{ slspath }}/templates/lxc-net.jinja
     - template: jinja
 
 lxc_config_default_network:
