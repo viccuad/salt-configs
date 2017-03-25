@@ -44,23 +44,23 @@ mail_install_certificate:
 
 mail_install_checkmail:
   file.managed:
-    - name: /home/{{ user }}/bin/checkmail.sh
+    - name: /home/{{ user }}/.local/bin/checkmail.sh
     - mode: 744
     - user: {{ user }}
     - group: {{ user }}
 
 mail_install_msmtpq:
   cmd.run:
-    - name: "gunzip -c /usr/share/doc/msmtp/examples/msmtpq/msmtpq.gz > /home/{{ user }}/bin/msmtpq"
+    - name: "gunzip -c /usr/share/doc/msmtp/examples/msmtpq/msmtpq.gz > /home/{{ user }}/.local/bin/msmtpq"
   file.managed:
-    - name: /home/{{ user }}/bin/msmtpq
+    - name: /home/{{ user }}/.local/bin/msmtpq
     - mode: 744
     - user: {{ user }}
     - group: {{ user }}
 
 mail_install_msmtpqueue:
   file.managed:
-    - name: /home/{{ user }}/bin/msmtp-queue
+    - name: /home/{{ user }}/.local/bin/msmtp-queue
     - source: /usr/share/doc/msmtp/examples/msmtpq/msmtp-queue
     - mode: 744
     - user: {{ user }}
@@ -68,14 +68,15 @@ mail_install_msmtpqueue:
 
 mail_configure_msmtpq:
   file.replace:
-    - name: /home/{{ user }}/bin/msmtpq
+    - name: /home/{{ user }}/.local/bin/msmtpq
     - pattern: ^LOG=~/log/msmtp.queue.log
     - repl: LOG=~/.local/share/logs/msmtp.queue.log
     - backup: False
+  # TODO disable network checking, leave it to the systemd unit
 
 mail_configure_msmtp-queue:
   file.replace:
-    - name: /home/{{ user }}/bin/msmtp-queue
+    - name: /home/{{ user }}/.local/bin/msmtp-queue
     - pattern: exec msmtpq
     - repl: exec /home/{{ user }}/bin/msmtpq
     - backup: False

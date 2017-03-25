@@ -88,7 +88,7 @@ gnupg_forwarding_sshd:
 
 gnupg_install_remotegpg:
   file.managed:
-    - name: /home/{{ user }}/bin/remote-gpg
+    - name: /home/{{ user }}/.local/bin/remote-gpg
     - mode: 744
     - user: {{ user }}
     - group: {{ user }}
