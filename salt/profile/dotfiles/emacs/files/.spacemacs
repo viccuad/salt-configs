@@ -87,9 +87,7 @@ values."
      pandoc
      markdown
      vimscript
-     (python :variables
-            ;; python-enable-yapf-format-on-save t
-     )
+     python
      django
      shell-scripts
      sql
@@ -103,13 +101,8 @@ values."
      speed-reading
      ranger
      gnus
-     ;; prodigy ;; manage system services
      themes-megapack
      command-log
-     ;; nlinum ;; faster than linum, but git-gutter doesn't work on it yet
-     ;; (golden-ratio :variables
-     ;;               setq golden-ratio-auto-scale t ;; for wide screens
-     ;;               )
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -156,7 +149,7 @@ values."
    ;; (default t)
    dotspacemacs-elpa-https t
    ;; Maximum allowed time in seconds to contact an ELPA repository.
-   dotspacemacs-elpa-timeout 5
+   dotspacemacs-elpa-timeout 10
    ;; If non nil then spacemacs will check for updates at startup
    ;; when the current branch is not `develop'. Note that checking for
    ;; new versions works via git commands, thus it calls GitHub services
@@ -203,15 +196,11 @@ values."
    dotspacemacs-themes '(
                          monokai
                          spacemacs-dark
-                         badwolf
                          minimal
-                         leuven
                          tangotango
-                         molokai
-                         naquadah
                          )
    ;; If non nil the cursor color matches the state color in GUI Emacs.
-   dotspacemacs-colorize-cursor-according-to-state t
+   dotspacemacs-colorize-cursor-according-to-state nil
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro Regular"
@@ -343,7 +332,7 @@ values."
    ;; Select a scope to highlight delimiters. Possible values are `any',
    ;; `current', `all' or `nil'. Default is `all' (highlight any scope and
    ;; emphasis the current one). (default 'all)
-   dotspacemacs-highlight-delimiters 'all
+   dotspacemacs-highlight-delimiters 'current
    ;; If non nil, advise quit functions to keep server open when quitting.
    ;; (default nil)
    dotspacemacs-persistent-server nil
@@ -415,11 +404,9 @@ you should place your code here."
 
       (set-face-background 'linum  (face-attribute 'hl-line :background))
 
-      (setq fci-rule-color "#000000")
+      (setq fci-rule-color "#292929")
 
       (set-face-italic 'font-lock-comment-face t)
-      ;; (custom-set-variables
-      ;; '(monokai-distinct-fringe-background t))
 
 ;;;; FLYCHECK ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -453,8 +440,8 @@ you should place your code here."
   (blink-cursor-mode t)
 
   ;; invert colors of cursor to see chars better:
-  '(etcc-use-color nil)
-  '(cursor ((t (:inverse-video t))))
+  ;; '(etcc-use-color nil)
+  ;; '(cursor ((t (:inverse-video t))))
 
   ;; for evil-terminal-cursor-changer:
   (unless (display-graphic-p)
@@ -473,31 +460,6 @@ you should place your code here."
            (linum-format (concat " %" (number-to-string w) "d ")))
       ad-do-it))
 
-  ;; highlight current line number as well
-  ;; (use-package hlinum
-  ;;   :config
-  ;;   (hlinum-activate)
-  ;;   (set-face-attribute 'linum-highlight-face nil
-  ;;                       :foreground (face-foreground 'default nil t)
-  ;;                       :background (face-attribute 'hl-line :background)))
-
-  ;; ;; Line number gutter in ncurses mode
-  ;; (unless window-system
-  ;;   (setq nlinum-format "%d "))
-  ;; ;; Preset nlinum width of whole document for nlinum
-  ;; (add-hook 'nlinum-mode-hook
-  ;;           (lambda ()
-  ;;             (when nlinum-mode
-  ;;               (setq nlinum--width
-  ;;                     ;; works with the default `nlinum-format'
-  ;;                     (length (number-to-string
-  ;;                              (count-lines (point-min) (point-max)))))
-  ;;               ;; use this instead if your `nlinum-format' has one space
-  ;;               ;; (or other character) after the number
-  ;;               ;;(1+ (length (number-to-string
-  ;;               ;;             (count-lines (point-min) (point-max)))))
-  ;;               (nlinum--flush))))
-
 ;;;; RULER ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
   (setq
@@ -510,6 +472,10 @@ you should place your code here."
   (add-hook 'prog-mode-hook 'turn-on-fci-mode)
   (add-hook 'text-mode-hook 'turn-on-fci-mode)
   (add-hook 'org-mode-hook 'turn-off-fci-mode 'append)
+
+;;;; GOLDEN RATIO ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+  (setq golden-ratio-auto-scale t) ;; for wide screens
 
 ;;;; VC GUTTER ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -539,7 +505,7 @@ you should place your code here."
                            ;; tab-mark
                            ;; newline-mark
                            face
-                           spaces            ;; SPACEs and HARD SPACEs
+                           ;; spaces         ;; SPACEs and HARD SPACEs
                            ;; lines          ;; lines that go past whitespace-line-column
                            ;; lines-tail     ;; part of lines that go past whitespace-line-column
                            tabs
@@ -548,7 +514,7 @@ you should place your code here."
                            trailing        
                            ;; evaluated in this order:
                            indentation                ;; either 8 or more spaces, or tabs, depending on indent-tab-mode
-                           ;; indentation::tab        ;; tabs at beginning of line
+                           indentation::tab        ;; tabs at beginning of line
                            ;; indentation::space      ;; 8 or more spaces at beginning of line
                            ;; evaluated in this order:
                            space-after-tab            ;; 8 or more SPACEs after a TAB, if ‘indent-tabs-mode’ (which see) is non-nil; otherwise tabs
@@ -618,14 +584,14 @@ you should place your code here."
 
   ;; Add all unicode characters to tab regexp so we highlight them too
   ;; (setq whitespace-tab-regexp "\\([\t[:nonascii:]]\\)")
+  ;; (add-hook 'font-lock-mode-hook 'hc-highlight-tabs) ;; highlight tabs
 
 ;;;; EVIL ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
   (setq
    evil-escape-key-sequence "jk" ;; but also use evil-escape to escape from "everything" in Emacs
-   ;;   evil-escape-delay 0.1
    evil-want-fine-undo nil ;; use vim undo, to undo last insert mode as a chunk:
-   ;; evil-move-cursor-back nil ;; don't move cursor back when going to normal mode from insert
+   evil-move-cursor-back nil ;; don't move cursor back when going to normal mode from insert
    evil-shift-round nil ;; this makes possible to put the shifting back how it was when using > and then <
    )
 
@@ -652,7 +618,6 @@ you should place your code here."
 ;;;; COLORS ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
   (add-hook 'css-mode-hook 'rainbow-mode)  ;; Rainbow mode for css automatically
-  ;; (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)  ;; Rainbow delimiters for all prog modes
 
 ;;;; CLIPBOARD ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -703,7 +668,7 @@ you should place your code here."
   (setq python-check-command "flake8") ;; check syntax after every save
 
   ;; LATEX
-  ;; when you open up a compiled PDF, the preview will update automatically when you recompile:
+  ;; automatically update pdf preview on each recompile
   (add-hook 'doc-view-mode-hook 'auto-revert-mode)
 
   ;; (setq TeX-show-compilation t)
@@ -724,7 +689,7 @@ you should place your code here."
 ;;;; ORG-MODE ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
   (with-eval-after-load 'org
-    ;; here goes your Org config :)
+    ;; my org config:
     (setq org-agenda-files (list "")
           org-todo-keywords '((sequence "TODO" "IN-PROGRESS" "WAITING" "DONE"))
           ;; http://members.optusnet.com.au/~charles57/GTD/gtd_workflow.html
@@ -871,25 +836,15 @@ you should place your code here."
 
 ;;;; TODO ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-  ;; fix zshenv warning
   ;; emacs doesn't see debian-el editing d/control etc as prog-mode nor text-mode
   ;; wrap
   ;; get autocompletion tooltips on terminal https://github.com/expez/company-quickhelp/issues/24
-  ;; mouse on terminal
   ;; fix colors on diffs and patches
   ;; make emacsclient independent and don't close, if 2 instances have the same buffer open
   ;; highlight tabs and indentation
   ;;   https://github.com/antonj/Highlight-Indentation-for-Emacs
   ;; https://www.gnu.org/software/emacs/manual/html_node/eintr/index.html#SEC_Contents
 
-
 )
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(pyvenv-virtualenvwrapper-python "/usr/bin/python3"))
