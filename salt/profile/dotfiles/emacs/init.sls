@@ -43,6 +43,7 @@ emacs_install:
       - aspell-en
       - aspell-de
       - aspell-es
+      - python3-proselint
       # markdown layer:
       - markdown
       # c/c++ layer:
