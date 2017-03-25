@@ -118,6 +118,7 @@ values."
                                       ;; org-notmuch.el
                                       notmuch ;; TODO I should use debian's packages
                                       gnus-alias ;; for messages.el aliases, used for notmuch
+                                      flycheck-checkbashisms
                                       )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -423,6 +424,17 @@ you should place your code here."
               line-end))
     :modes (text-mode markdown-mode gfm-mode))
   (add-to-list 'flycheck-checkers 'proselint)
+
+  (require 'flycheck-checkbashisms)
+  (eval-after-load 'flycheck '(add-hook 'flycheck-mode-hook #'flycheck-checkbashisms-setup))
+
+  ;; Check 'echo -n' usage
+  (setq flycheck-checkbashisms-newline t)
+
+  ;; Check non-POSIX issues but required to be supported  by Debian Policy 10.4
+  ;; Setting this variable to non nil made flycheck-checkbashisms-newline effects
+  ;; regardless of its value
+  (setq flycheck-checkbashisms-posix t)
 
 ;;;; AVY ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
