@@ -10,5 +10,7 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 
 alias th='trash --verbose'
-alias xdg='xdg-open'
+function xdg () {
+    xdg-open "$*" 2>/dev/null &
+}
 alias ag='ag --hidden'
