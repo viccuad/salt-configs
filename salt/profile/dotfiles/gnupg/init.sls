@@ -93,5 +93,18 @@ gnupg_install_remotegpg:
     - user: {{ user }}
     - group: {{ user }}
 
+gnupg_restore_publickey:
+  file.recurse:
+    - name: /tmp/publickey
+    - source: salt://{{ slspath }}/publickey/
+  cmd.run:
+    - names:
+      - gpg --import /tmp/publickey/viccuad-public-gpg.key
+      - gpg --import-ownertrust /tmp/publickey/viccuad-ownertrust-gpg.txt
+    - runas: {{ user }}
+      # to import, do:
+      # gpg -a --export 0xA2591E231E251F36 > viccuad-public-gpg.key
+      # gpg --export-ownertrust > viccuad-ownertrust-gpg.txt
+
 {% endif %}
 {% endfor %}
