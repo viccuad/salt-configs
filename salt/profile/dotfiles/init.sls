@@ -13,3 +13,4 @@ include:
   - profile.dotfiles.debian
   - profile.dotfiles.nvim
   - profile.dotfiles.signing-party
+  - profile.dotfiles.virtualenvwrapper
