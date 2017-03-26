@@ -6,6 +6,7 @@ include:
   - profile.dotfiles.gnupg
   - profile.dotfiles.git
   - profile.dotfiles.pass
+  - profile.dotfiles.weechat
   - profile.dotfiles.beets
   - profile.dotfiles.debuggers
   - profile.dotfiles.lxc
