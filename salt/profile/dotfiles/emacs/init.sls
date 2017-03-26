@@ -31,7 +31,7 @@ emacs_zshaliases:
     - name: /home/{{ user }}/.zsh/aliases.zsh
     - text: |
             # emacs aliases:
-            alias sm="TERM=xterm-256color emacsclient -t -c"
+            alias sm="emacsclient -t -c"
 
 emacs_install:
   pkg.installed:
