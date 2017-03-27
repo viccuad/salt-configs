@@ -12,7 +12,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.define :workstation do |workstation_config|
     workstation_config.vm.box = "stretch"
-    workstation_config.vm.host_name = 'workstation.local'
+    workstation_config.vm.host_name = 'workstation'
     workstation_config.vm.synced_folder "salt/", "/srv/salt"
     workstation_config.vm.synced_folder "pillar/", "/srv/pillar"
     # Don't set up private network:
