@@ -674,6 +674,8 @@ you should place your code here."
   (setq c-default-style "linux") ;; or k&r for example
   (with-eval-after-load 'projectile
     (push '("C" "h") projectile-other-file-alist)) ;; make projective jump from .C to .h files and viceversa
+  (add-hook 'c-mode-hook (lambda () (setq comment-start "//"
+                                          comment-end   ""))) ;; make comments with // instead of /**/
 
   ;; Python
   (add-to-list 'auto-mode-alist '("\\.gd$" . python-mode))
@@ -843,6 +845,7 @@ you should place your code here."
 
 
 ;;;; SAFE LOCAL VARS ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
   ;; for .dir-locals.el files
   (put 'helm-make-build-dir 'safe-local-variable 'stringp)
 
