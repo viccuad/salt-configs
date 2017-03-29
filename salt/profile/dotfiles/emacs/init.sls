@@ -62,6 +62,8 @@ emacs_install:
         # - flake8 using pylint instead, because it is broken for now
       - pylint
       - pylint3
+      - python-jedi
+      - python3-jedi
       - python-hacking
       - python3-hacking
       - hy
