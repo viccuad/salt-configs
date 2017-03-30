@@ -7,6 +7,7 @@ include:
 desktopenv_install:
   pkg.installed:
     - names:
+      - gnome
       - firefox
       - python-neovim-gui
       - firewall-applet
