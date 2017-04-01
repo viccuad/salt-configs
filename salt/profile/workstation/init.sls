@@ -1,6 +1,7 @@
 workstation_packages:
   pkg.installed:
     - names:
+      - network-manager
       - vim
       - build-essential
       - git
