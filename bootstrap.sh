@@ -6,4 +6,4 @@ apt-get -y update
 apt-get -y install git-core python-git salt-minion
 
 # salt-minion service shouldn't be running, as we have no master:
-systemctl stop salt-minion && sudo systemctl disable salt-minion
+systemctl stop salt-minion && systemctl disable salt-minion
