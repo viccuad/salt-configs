@@ -13,4 +13,3 @@ alias th='trash --verbose'
 function xdg () {
     xdg-open "$*" 2>/dev/null &
 }
-alias ag='ag --hidden'
