@@ -29,16 +29,15 @@ I have contemplated several options:
   * salt sds:
     https://docs.saltstack.com/en/latest/topics/sdb/
 
-I [use][3] smartcard and I like encrypting everything with gpg and centralizing
-everything with it as a 2SA.
-
+I [use][3] a smartcard and I like encrypting everything with gpg and
+centralizing everything with it as a 2SA.
 I also want to apply the public part of the salt configs and not have binary
 encrypted blobs breaking programs here and there (eg: blobs instead of config
 files for weechat, or gnupg, or mail, etc).
 
-I've chosen the git submodule option. I like the trade-off of having a git
-submodule that contains all the private states and files, and submodule only
-gets used if it has been initialized and populated
+With that in mind, I've chosen the git submodule option. I like the trade-off
+of having a git submodule that contains all the private states and files, and
+submodule only gets used if it has been initialized and populated
 
 
 # Deploying the configs #
