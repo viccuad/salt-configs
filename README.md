@@ -29,16 +29,16 @@ I have contemplated several options:
   * salt sds:
     https://docs.saltstack.com/en/latest/topics/sdb/
 
-I use[3] smartcard and I like encrypting everything with gpg and centralizing
+I [use][3] smartcard and I like encrypting everything with gpg and centralizing
 everything with it as a 2SA.
+
 I also want to apply the public part of the salt configs and not have binary
 encrypted blobs breaking programs here and there (eg: blobs instead of config
 files for weechat, or gnupg, or mail, etc).
+
 I've chosen the git submodule option. I like the trade-off of having a git
 submodule that contains all the private states and files, and submodule only
 gets used if it has been initialized and populated
-
-[1]:http://viccuad.me/blog/secure-yourself-part-1-airgapped-computer-and-GPG-smartcards
 
 
 # Deploying the configs #
@@ -86,8 +86,8 @@ gpg-agent forwarding (and therefore the private states).
 3. Run the first phase of salt states, the public one:
 
 ```
-    workstation ~# salt-call -l debug --state-output=mixed state.apply
-    ```
+workstation ~# salt-call -l debug --state-output=mixed state.apply
+```
 
 4. Connect the smartcard, do `git submodule init && git submodule update`
 5. Rerun salt states
@@ -127,3 +127,4 @@ This pattern is a best-practices one for Puppet, see [1] and [2].
 
 [1]: https://docs.puppet.com/pe/2016.4/r_n_p_intro.html
 [2]: https://puppet.com/presentations/designing-puppet-rolesprofiles-pattern
+[3]:http://viccuad.me/blog/secure-yourself-part-1-airgapped-computer-and-GPG-smartcards
