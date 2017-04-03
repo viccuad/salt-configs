@@ -16,7 +16,7 @@ git_recurse_files:
 git_install:
   pkg.installed:
     - names:
-      - git-all
+      - git
       - tig
       - gitg
 
