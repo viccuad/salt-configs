@@ -1,6 +1,6 @@
 #!/bin/sh
 
-STATE=`nmcli networking connectivity`
+STATE=`nmcli networking connectivity check`
 
 if [ $STATE = 'full' ]
 then
