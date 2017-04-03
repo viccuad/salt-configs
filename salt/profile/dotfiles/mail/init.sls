@@ -115,5 +115,23 @@ mail_enable_checkmail:
     - group: {{ user }}
     - makedirs: True
 
+mail_exim4_configure:
+  # Configure exim4, which is what /usr/sbin/sendmail uses, to ~/.mail/local
+  # maildir.
+  # this would be better done with debconf, but seems buggy
+  file.recurse:
+    - name: /etc/exim4/
+    - source: salt://{{ slspath }}/templates/
+    - file_mode: keep
+    - template: jinja
+  cmd.run:
+    - name: dpkg-reconfigure --frontend noninteractive exim4-config
+
+mail_localmail_configure:
+  # Sent root mails to the user:
+  file.append:
+    - name: /etc/aliases
+    - text: |
+            root: {{ user }}
 {% endif %}
 {% endfor %}
