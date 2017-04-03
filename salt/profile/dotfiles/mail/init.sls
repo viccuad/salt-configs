@@ -29,6 +29,7 @@ mail_install:
       - afew
       - dbacl # for afew --update-reference
       - logrotate
+      - rss2email
     - require:
       - sls: profile.dotfiles.emacs
 

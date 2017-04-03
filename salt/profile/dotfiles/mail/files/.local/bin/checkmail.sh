@@ -5,6 +5,7 @@ STATE=`nmcli networking connectivity`
 if [ $STATE = 'full' ]
 then
     ~/bin/msmtp-queue # send mail
+    r2e run # recollect rss feeds to local mail
     mbsync meviccuadme # sync mail # TODO does this sync mail back?
     notmuch new # find and import new messages to notmuch db, with tag `new`
     # TODO notmuch tag the maildir back with `notmuch tags`?
