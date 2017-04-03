@@ -32,6 +32,7 @@ mail_install:
       - rss2email
     - require:
       - sls: profile.dotfiles.emacs
+      - pkg: network-manager
 
 mail_install_certificate:
   cmd.run:
