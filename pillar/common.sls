@@ -1,6 +1,11 @@
 include:
   - ssh_keys.users.viccuad
 
+timezone:
+  name: 'Europe/Berlin'
+  utc: True
+
+
 locale:
   present:
     - "en_US.UTF-8"
@@ -21,3 +26,17 @@ locale:
     - 'LC_MONETARY=en_DK.UTF-8'
     - 'LC_PAPER=en_DK.UTF-8'
     - 'LC_MEASUREMENT=en_DK.UTF-8'
+
+sshd_config:
+  PermitRootLogin: 'no'
+  PasswordAuthentication: 'no'
+  RSAAuthentication: 'no'
+  PubkeyAuthentication: 'yes'
+  PermitEmptyPasswords: 'no'
+  AcceptEnv: "LANG LC_*"
+  Ciphers:
+    - 'aes256-ctr'
+  MACs:
+    - 'hmac-sha2-512'
+openssh:
+  sshd_enable: true

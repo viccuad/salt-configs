@@ -22,15 +22,10 @@ fileserver_backend:
   - git
 
 gitfs_remotes:
-  # - https://github.com/saltstack-formulas/dhcpd-formula.git
-  # - https://github.com/saltstack-formulas/keepalived-formula.git
   - https://github.com/saltstack-formulas/locale-formula.git
-  # - https://github.com/saltstack-formulas/ntp-formula.git
-  # - https://github.com/saltstack-formulas/openssh-formula.git
-  # - https://github.com/saltstack-formulas/salt-formula.git
-  # - https://github.com/saltstack-formulas/sudoers-formula.git
+  - https://github.com/saltstack-formulas/openssh-formula.git
   - https://github.com/saltstack-formulas/users-formula.git
-  # - https://github.com/saltstack-formulas/timezone-formula.git
+  - https://github.com/saltstack-formulas/timezone-formula.git
 
 grains:
   roles:
