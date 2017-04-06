@@ -55,6 +55,7 @@ emacs_install:
       - clang-tidy
       - global # for ggtags (helm-ggtags):
       - exuberant-ctags
+      - pkg-config
       # shell layer:
       - shellcheck
       - python3-bashate
