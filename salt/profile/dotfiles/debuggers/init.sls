@@ -23,6 +23,7 @@ debuggers_install:
       - valgrind
       - tcpdump
       - net-tools
+      - nmap
 
 {% endif %}
 {% endfor %}
