@@ -10,27 +10,35 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       lxc.customize 'cgroup.memory.limit_in_bytes', '1024M'
   end
 
-  config.vm.define :workstation do |workstation_config|
-    workstation_config.vm.box = "stretch"
-    workstation_config.vm.host_name = 'workstation'
-    workstation_config.vm.synced_folder "salt/", "/srv/salt"
-    workstation_config.vm.synced_folder "pillar/", "/srv/pillar"
-    # Don't set up private network:
-    # workstation_config.vm.network "private_network", ip: "192.168.50.13" # bug https://github.com/mitchellh/vagrant/issues/7155
-    workstation_config.vm.provision "shell", path: "bootstrap.sh"
+  # this hostnames' list get used by vagrant to populate the hostname (duh) of
+  # the container, with gets read by salt as the `id` grain, which is then used
+  # to set `role` grains, which get checked afterwards to apply the corresponding
+  # configuration
+  hostnames = ['workstation', 'server']
 
-    # workaround to set up /etc/salt/minion, since vagrant doesn't allow to sync
-    # single files except by setting up rsync..
-    workstation_config.vm.provision :salt do |salt|
-      salt.masterless = true
-      # don't bootstrap nor run the service, as we are masterless
-      salt.no_minion = true
-      salt.minion_config = "etc/workstation"
-      salt.run_highstate = false
-      salt.verbose = true
-      salt.colorize = true
+  hostnames.each do |name|
+    config.vm.define "#{name}" do |system|
+      system.vm.box = "stretch"
+      system.vm.host_name = "#{name}"
+      system.vm.synced_folder "salt/", "/srv/salt"
+      system.vm.synced_folder "pillar/", "/srv/pillar"
+      # system.vm.synced_folder "etc/", "/etc/salt"
+      # Don't set up private network:
+      # system.vm.network "private_network", ip: "192.168.50.13" # bug https://github.com/mitchellh/vagrant/issues/7155
+      system.vm.provision "shell", path: "bootstrap.sh"
+
+      # # workaround to set up /etc/salt/minion, since vagrant doesn't allow to sync
+      # # single files except by setting up rsync..
+      system.vm.provision :salt do |salt|
+        salt.masterless = true
+        # don't bootstrap nor run the service, as we are masterless
+        salt.no_minion = true
+        salt.minion_config = "etc/#{name}"
+        salt.run_highstate = false
+        salt.verbose = true
+        salt.colorize = true
+      end
     end
-
   end
 
 end
