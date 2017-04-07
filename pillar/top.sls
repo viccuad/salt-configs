@@ -1,5 +1,6 @@
-{% set roles = salt['grains.get']('roles', '') %}
-{% set subroles = salt['grains.get']('subroles', {}) %}
+{% set roles = salt['pillar.get']('roles', '') %}
+{% set subroles = salt['pillar.get']('subroles', {}) %}
+{% set domain = salt['pillar.get']('domain') %}
 {% set id = salt['grains.get']('id') %}
 
 base:
@@ -10,11 +11,11 @@ base:
     - id.{{ id }}
 {% for role in roles %}
   'roles:{{ role }}':
-    - match: grain
+    - match: pillar
     - role.{{ role }}
 {% endfor %}
 {% for role,subrole in subroles.items() %}
   'subroles:{{ role }}:{{ subrole }}':
-    - match: grain
+    - match: pillar
     - role.{{ role }}.{{ subrole }}
 {% endfor %}

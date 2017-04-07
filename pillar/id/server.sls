@@ -1,5 +1,2 @@
-salt:
-  minion:
-    grains:
-      roles:
-        - server
+roles:
+  - server

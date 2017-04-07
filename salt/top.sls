@@ -2,14 +2,14 @@ base:
   '*':
     - profile.common
   'roles:workstation':
-    - match: grain
+    - match: pillar
     - profile.workstation
   'roles:laptop':
-    - match: grain
+    - match: pillar
     - profile.laptop
   'roles:desktopenv':
-    - match: grain
+    - match: pillar
     - profile.desktopenv
   'roles:server':
-    - match: grain
+    - match: pillar
     - profile.server
