@@ -10,3 +10,6 @@ base:
   'roles:desktopenv':
     - match: grain
     - profile.desktopenv
+  'roles:server':
+    - match: grain
+    - profile.server
