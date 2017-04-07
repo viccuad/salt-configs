@@ -22,7 +22,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       system.vm.host_name = "#{name}"
       system.vm.synced_folder "salt/", "/srv/salt"
       system.vm.synced_folder "pillar/", "/srv/pillar"
-      # system.vm.synced_folder "etc/", "/etc/salt"
       # Don't set up private network:
       # system.vm.network "private_network", ip: "192.168.50.13" # bug https://github.com/mitchellh/vagrant/issues/7155
       system.vm.provision "shell", path: "bootstrap.sh"
@@ -33,7 +32,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         salt.masterless = true
         # don't bootstrap nor run the service, as we are masterless
         salt.no_minion = true
-        salt.minion_config = "etc/#{name}"
+        salt.minion_config = "etc/minion"
         salt.run_highstate = false
         salt.verbose = true
         salt.colorize = true

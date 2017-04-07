@@ -78,7 +78,7 @@ gpg-agent forwarding (and therefore the private states).
 ## From inside a system ##
 
 1. Symlink:
-   - `etc/workstation` to `/etc/salt/minion`
+   - `etc/minion` to `/etc/salt/minion`
    - `pillar` to `/srv/pillar`
    - `salt` to `/srv/salt`
 2. Install the needed dependencies by executing `bootstrap.sh`
