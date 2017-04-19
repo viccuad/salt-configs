@@ -37,6 +37,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         salt.verbose = true
         salt.colorize = true
       end
+      system.vm.provision "shell",
+                          inline: "salt-call --state-output=mixed state.apply"
     end
   end
 
