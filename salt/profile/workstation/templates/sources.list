@@ -1,37 +1,36 @@
-#STABLE (Jessie)
-#deb http://ftp.dk.debian.org/debian/ jessie main non-free contrib
-#deb-src http://ftp.dk.debian.org/debian/ jessie main non-free contrib
+# STABLE
+# deb http://deb.debian.org/debian/ stretch main contrib non-free
+# deb-src http://deb.debian.org/debian/ stretch main contrib non-free
 
-#deb http://security.debian.org/ jessie/updates main contrib non-free
-#deb-src http://security.debian.org/ jessie/updates main contrib non-free
+# deb http://security.debian.org/ stretch/updates main contrib non-free
+# deb-src http://security.debian.org/ stretch/updates main contrib non-free
 
-# jessie-updates, previously known as 'volatile'
-#deb http://ftp.dk.debian.org/debian/ jessie-updates main contrib non-free
-#deb-src http://ftp.dk.debian.org/debian/ jessie-updates main contrib non-free
+# deb http://deb.debian.org/debian/ stretch-updates main contrib non-free
+# deb-src http://deb.debian.org/debian/ stretch-updates main contrib non-free
 
-#BACKPORTS
-#deb http://ftp.debian.org/debian/ jessie-backports main non-free contrib
+# deb http://debug.mirrors.debian.org/debian-debug/ stretch-debug main
 
-#TESTING
-deb http://ftp.dk.debian.org/debian/ testing main non-free contrib
-deb-src http://ftp.dk.debian.org/debian/ testing main non-free contrib
+# BACKPORTS
+# deb http://deb.debian.org/debian/ stretch-backports main contrib non-free
 
-deb http://security.debian.org/ testing/updates main contrib non-free
-deb-src http://security.debian.org/ testing/updates main contrib non-free
+# TESTING
+deb http://deb.debian.org/debian/ testing main contrib non-free
+deb-src http://deb.debian.org/debian/ testing main contrib non-free
 
 deb http://deb.debian.org/debian-debug testing-debug main
 
-# stretch-updates, previously known as 'volatile'
-#deb http://ftp.dk.debian.org/debian/ stretch-updates main contrib non-free
-#deb-src http://ftp.dk.debian.org/debian/ stretch-updates main contrib non-free
+# UNSTABLE
+# deb http://deb.debian.org/debian/ unstable main contrib non-free
+# deb-src http://deb.debian.org/debian/ unstable main contrib non-free
 
-#UNSTABLE
-#deb http://ftp.dk.debian.org/debian/ unstable main non-free contrib
-#deb-src http://ftp.dk.debian.org/debian/ unstable main non-free contrib
+# deb http://debug.mirrors.debian.org/debian-debug/ unstable-debug main
 
-#EXPERIMENTAL
-deb http://ftp.dk.debian.org/debian/ experimental main
+# EXPERIMENTAL
+deb http://deb.debian.org/debian/ experimental main
+deb-src http://deb.debian.org/debian/ experimental main
 
-# Reproducible experimental repo
+# deb http://debug.mirrors.debian.org/debian-debug/ experimental-debug main
+
+# REPRODUCIBLE EXPERIMENTAL REPO
 # deb http://reproducible.alioth.debian.org/debian/ ./
 # deb-src http://reproducible.alioth.debian.org/debian/ ./
