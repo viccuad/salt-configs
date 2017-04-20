@@ -1,11 +1,10 @@
 {% for user, details in pillar.get('users', {}).items() %}
 {% if 'users' in details['groups'] %}
-
-[user]
-	# left intentionally commented:
-	# name = {{ details['fullname'] }}
-	# email = <your mail>
-	# signingkey = 0xA2591E231E251F36
+# left intentionally commented:
+# [user]
+#	name = John Doe
+#	email = john@doe.false
+#	signingkey = 0xA2571E3312255B34
 [credential]
 	helper = cache --timeout=3600
 [giggle]
