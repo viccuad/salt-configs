@@ -6,7 +6,7 @@ users:
     uid: 1001
     gid: 1001
     shell: /bin/zsh
-    email: vic@localhost.{{ hostname }}
+    email: vic@{{ hostname }}
     user_dir_mode: 755
     groups:
       - vic
