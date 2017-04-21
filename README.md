@@ -37,7 +37,7 @@ files for weechat, or gnupg, or mail, etc).
 
 With that in mind, I've chosen the git submodule option. I like the trade-off
 of having a git submodule that contains all the private states and files, and
-submodule only gets used if it has been initialized and populated
+the submodule only gets used if it has been initialized and populated.
 
 
 # Deploying the configs #
@@ -77,12 +77,9 @@ gpg-agent forwarding (and therefore the private states).
 
 ## From inside a system ##
 
-1. Symlink:
-   - `etc/minion` to `/etc/salt/minion`
-   - `pillar` to `/srv/pillar`
-   - `salt` to `/srv/salt`
-2. Install the needed dependencies by executing `bootstrap.sh`
-3. Run the first phase of salt states, the public one:
+1. Symlink the needed folders and install the dependencies by executing
+   `bootstrap.sh --symlink`
+2. Run the first phase of salt states, the public one:
 
 ```
 workstation ~# salt-call -l debug --state-output=mixed state.apply
