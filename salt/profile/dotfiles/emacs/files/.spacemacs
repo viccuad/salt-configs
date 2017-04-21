@@ -816,23 +816,27 @@ you should place your code here."
     mail-user-agent 'message-user-agent)
   ;; Setup message-user-agent options:
   (setq
-    message-directory "~/Maildir/meviccuadme/Drafts"  ;; save drafts here TODO doesn't work
+    message-directory "~/.mail/meviccuadme/Drafts"  ;; save drafts here TODO doesn't work
     message-kill-buffer-on-exit t)                    ;; kill buffer after sending mail
     (add-hook 'message-send-hook 'mml-secure-message-sign-pgpmime)
 
   ;; (setq browse-url-browser-function 'browse-url-generic
   ;;   browse-url-generic-program "firefox")
 
-;; Setup mail sender (msmtp)
+;; Setup mail sender
   (setq
     message-send-mail-function 'message-send-mail-with-sendmail
  ;; sendmail-program "/home/vic/.dotfiles/mail/nostow/bin/msmtpq"
-    sendmail-program "/usr/bin/msmtp"
+    sendmail-program "msmtpq"
     mail-specify-envelope-from t
     ;; needed for debians message.el cf. README.Debian.gz
-    message-sendmail-f-is-evil nil
-    mail-envelope-from 'header
-    message-sendmail-envelope-from 'header)
+    message-sendmail-f-is-evil t
+    ;; provide sendmail with the msmtp account we are using
+    message-sendmail-extra-arguments '("--read-envelope-from")
+    )
+
+    ;; mail-envelope-from 'header
+    ;; message-sendmail-envelope-from 'header)
 
 ;; Setup Fcc to save sent messages
   ;; only 1 Fcc:
@@ -859,6 +863,7 @@ you should place your code here."
   ;; highlight tabs and indentation
   ;;   https://github.com/antonj/Highlight-Indentation-for-Emacs
   ;; https://www.gnu.org/software/emacs/manual/html_node/eintr/index.html#SEC_Contents
+  ;; fix whitespaces, they show in emacs but not in emacs -nw
 
 )
 ;; Do not write anything past this comment. This is where Emacs will
