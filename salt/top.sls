@@ -13,3 +13,6 @@ base:
   'roles:server':
     - match: pillar
     - profile.server
+  'roles:offlinepc':
+    - match: pillar
+    - profile.offlinepc
