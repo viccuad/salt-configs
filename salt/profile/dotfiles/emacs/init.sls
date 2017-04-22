@@ -16,7 +16,7 @@ emacs_zshenv_replace_editor:
   file.replace:
     - name: /home/{{ user }}/.zshenv
     - pattern: EDITOR='vim'
-    - repl: EDITOR='emacsclient -nw'
+    - repl: EDITOR='TERM=xterm-256color emacsclient -nw'
     - backup: False
 
 emacs_zshenv:
@@ -31,7 +31,7 @@ emacs_zshaliases:
     - name: /home/{{ user }}/.zsh/aliases.zsh
     - text: |
             # emacs aliases:
-            alias sm="emacsclient -t -c"
+            alias sm="TERM=xterm-256color emacsclient -t -c"
 
 emacs_install:
   pkg.installed:
