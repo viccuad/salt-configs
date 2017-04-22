@@ -14,7 +14,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # the container, with gets read by salt as the `id` grain, which is then used
   # to set `role` grains, which get checked afterwards to apply the corresponding
   # configuration
-  hostnames = ['workstation', 'server']
+  hostnames = ['aworkstation', 'aserver']
 
   hostnames.each do |name|
     config.vm.define "#{name}" do |system|
