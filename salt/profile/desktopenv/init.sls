@@ -8,8 +8,8 @@ desktopenv_install:
   pkg.installed:
     - names:
       - gnome
-      - firefox
-      - python-neovim-gui
+      - firefox-esr
+      - dconf-gsettings-backend
       - firewall-applet
       - calibre
       - ardour
@@ -19,32 +19,30 @@ desktopenv_install:
       - guitarix
       - gparted
       - meld
-      - pomodoro
-      - tor browser
+      - gnome-shell-pomodoro
+      - torbrowser-launcher
       - vlc
       - virt-manager
-      - tails-installer
-      - gnome-extensions
+      - gnome-shell-extensions
       - vrms
       - pinentry-gnome3
       - yubioath-desktop
-  cmd.run:
-    - names:
-      - yubikey-*
+      - yubikey-neo-manager
+      - yubikey-personalization
+      - yubikey-personalization-gui
+      - intel-gpu-tools
 
 desktopenv_enable_multiarch:
   cmd.run:
     - names:
       - dpkg --add-architecture i386
+      # needs license approval:
+      - apt-get -y install steam
 
 desktopenv_install_contrib_nonfree:
   pkg.installed:
     - names:
-      - steam
       - steam-devices
-      - virtualbox
-      - virtualbox-dkms
-      - virtualbox-qt
       - unrar
       - intel-microcode
       - iucode-tool
