@@ -22,8 +22,8 @@ debian_zshenv:
     - name: /home/{{ user }}/.zshenv
     - text: |
             # debian:
-            export DEBFULLNAME=""
-            export DEBEMAIL=""
+            # export DEBFULLNAME=""
+            # export DEBEMAIL=""
             export DEB_BUILD_OPTIONS="parallel={{ grains['num_cpus'] - 1 }}"
 
 debian_zshaliases:
