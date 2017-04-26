@@ -89,6 +89,7 @@ values."
      vimscript
      python
      django
+     go
      shell-scripts
      sql
      vagrant
