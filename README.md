@@ -1,6 +1,8 @@
-The idea is to apply the Puppet code pattern to create Salt config files to
-setup from a GUIless workstation, to laptop configs, Desktop Environments,
-and later add NAS, router, media servers, Kodi, etc.
+New incarnation of my dotfiles, on steroids.
+
+This salt configs implement Puppet's "Role" pattern to set up my dotfiles,
+GUIless workstation, laptop setup, desktop environment, offline PC, and more.
+Currently it contains already several hundred(!) states.
 
 
 # Where are the dotfiles? #
@@ -27,10 +29,10 @@ I have contemplated several options:
   * salt gpg renderer:
     https://docs.saltstack.com/en/latest/ref/renderers/all/salt.renderers.gpg.html
   * salt sds:
-    https://docs.saltstack.com/en/latest/topics/sdb/
+    https://docs.saltstack.com/en/latest/topics/sdb
 
 I [use][3] a smartcard and I like encrypting everything with gpg and
-centralizing everything with it as a 2SA.
+centralizing everything with it as a 2-factor auth.
 I also want to apply the public part of the salt configs and not have binary
 encrypted blobs breaking programs here and there (eg: blobs instead of config
 files for weechat, or gnupg, or mail, etc).
@@ -72,7 +74,7 @@ gpg-agent forwarding (and therefore the private states).
 6. `git submodule init && git submodule update`
 7. Rerun salt states now that the private submodules are checked out
 8. ???
-9. Profit
+9. Profit!
 
 
 ## From inside a system ##
@@ -89,7 +91,7 @@ workstation ~# salt-call -l debug --state-output=mixed state.apply
 5. Rerun salt states
 
 
-# Building an Stretch image #
+# Building a Stretch image #
 
 Until Debian Stretch is officially released, you can build your own Stretch lxc
 image (following the official scripts) and use it for the Vagrantfile.
@@ -103,7 +105,7 @@ $ vagrant up
 ```
 
 
-# Salt code pattern #
+# "Roles" code pattern #
 
 The code that describes the infrastructure is implementing the following pattern:
 
