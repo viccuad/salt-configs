@@ -9,6 +9,10 @@ desktopenv_install:
     - names:
       - gnome
       - firefox-esr
+      - xul-ext-ublock-origin
+      - xul-ext-https-everywhere
+      - xul-ext-itsalltext
+      - xul-ext-noscript
       - dconf-gsettings-backend
       - firewall-applet
       - calibre
