@@ -16,3 +16,6 @@ base:
   'roles:offlinepc':
     - match: pillar
     - profile.offlinepc
+  'roles:sambaserver':
+    - match: pillar
+    - profile.sambaserver
