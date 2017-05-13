@@ -13,6 +13,9 @@ base:
   'roles:server':
     - match: pillar
     - profile.server
+  'roles:freedombox':
+    - match: pillar
+    - profile.freedombox
   'roles:offlinepc':
     - match: pillar
     - profile.offlinepc
