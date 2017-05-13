@@ -5,7 +5,6 @@ timezone:
   name: 'Europe/Berlin'
   utc: True
 
-
 locale:
   present:
     - "en_US.UTF-8"
@@ -38,5 +37,7 @@ sshd_config:
     - 'aes256-ctr'
   MACs:
     - 'hmac-sha2-512'
+
 openssh:
+  # Controls if SSHD should be enabled/started
   sshd_enable: true
