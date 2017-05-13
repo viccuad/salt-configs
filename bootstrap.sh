@@ -5,7 +5,7 @@ do
     key="$1"
     case $key in
         -s|--symlink)
-            echo "symlinking"
+            echo "Symlinking.."
             ln -s -f "$(pwd)"/salt /srv/salt
             ln -s -f "$(pwd)"/pillar /srv/pillar
             ln -s -f "$(pwd)"/etc/minion /etc/salt/minion
@@ -26,13 +26,19 @@ do
     shift # past argument or value
 done
 
+echo "Updating repos.."
+apt-get -y update
+
+echo "Installing dependencies.."
 # install gitpython instead of pygit2 to be able to use gitfs
 # See https://github.com/libgit2/pygit2/issues/644
-apt-get -y update
 # don't override locally installed config files
 apt-get -y -o Dpkg::Options::="--force-confdef" \
     -o Dpkg::Options::="--force-confold" install git-core python-git salt-minion
 
+echo "Disabling salt-minion service.."
 # salt-minion service shouldn't be running, as we have no master:
 systemctl stop salt-minion
 systemctl disable salt-minion
+
+echo "Done!"
