@@ -36,17 +36,9 @@ desktopenv_install:
       - yubikey-personalization-gui
       - intel-gpu-tools
 
-desktopenv_enable_multiarch:
-  cmd.run:
-    - names:
-      - dpkg --add-architecture i386
-      # needs license approval:
-      - apt-get -y install steam
-
 desktopenv_install_contrib_nonfree:
   pkg.installed:
     - names:
-      - steam-devices
       - unrar
       - intel-microcode
       - iucode-tool
