@@ -1,6 +1,7 @@
 {% for user, details in pillar.get('users', {}).items() %}
 {% if 'users' in details['groups'] %}
 
+
 games_enable_multiarch:
   cmd.run:
     - names:
@@ -26,7 +27,14 @@ games_install_steam:
 games_install:
   pkg.installed:
     - names:
+      - minetest
       - steam-devices
+      - retroarch
+      - zsnes
+      - mednafen
+      - pcsx2
+      - pcsxr
+
 games_recurse_files:
   file.recurse:
     - name: /home/{{ user }}/
