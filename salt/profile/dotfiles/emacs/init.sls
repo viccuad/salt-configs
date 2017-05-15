@@ -36,7 +36,8 @@ emacs_zshaliases:
 emacs_install:
   pkg.installed:
     - names:
-      - emacs25
+      - emacs25-nox # non-gui
+      - emacs25-common-non-dfsg
       - emacs-goodies-el
       - xclip
       - aspell

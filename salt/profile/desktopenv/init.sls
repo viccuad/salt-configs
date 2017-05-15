@@ -7,6 +7,7 @@ include:
 desktopenv_install:
   pkg.installed:
     - names:
+      - emacs25 # gui
       - gnome
       - firefox-esr
       - xul-ext-ublock-origin
