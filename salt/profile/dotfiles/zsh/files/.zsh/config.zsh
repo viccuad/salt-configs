@@ -5,6 +5,10 @@ SAVEHIST=10000
 
 # enable emacs (readline) style on zsh
 bindkey -e
+# readline-like edit of command line:
+zle -N edit-command-line
+bindkey '^xe' edit-command-line
+bindkey '^x^e' edit-command-line
 
 setopt NO_BG_NICE # don't nice background tasks
 setopt NO_HUP # don't kill bg processes when exiting
