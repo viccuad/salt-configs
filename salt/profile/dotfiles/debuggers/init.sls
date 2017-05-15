@@ -24,6 +24,7 @@ debuggers_install:
       - tcpdump
       - net-tools
       - nmap
+      - winpdb
 
 {% endif %}
 {% endfor %}
