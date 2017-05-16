@@ -1,3 +1,4 @@
+{% if grains['os_family'] == 'Debian' %}
 workstation_sourceslist:
   file.managed:
     - name: /etc/apt/sources.list
@@ -5,6 +6,7 @@ workstation_sourceslist:
   cmd.run:
     - names:
       - apt-get update
+{% endif %}
 
 workstation_packages:
   pkg.installed:

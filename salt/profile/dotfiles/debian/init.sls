@@ -1,3 +1,5 @@
+{% if grains['os_family'] == 'Debian' %}
+
 {% for user, details in pillar.get('users', {}).items() %}
 {% if 'users' in details['groups'] %}
 
@@ -147,3 +149,5 @@ debian_clone_reproducible-misc:
 
 {% endif %}
 {% endfor %}
+
+{% endif %}
