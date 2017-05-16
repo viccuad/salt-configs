@@ -3,8 +3,8 @@
 users:
   vic:
     fullname: Víctor Cuadrado Juan
-    uid: 1001
-    gid: 1001
+    uid: 1000
+    gid: 1000
     shell: /bin/zsh
     email: vic@{{ hostname }}
     user_dir_mode: 755
