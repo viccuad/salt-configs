@@ -5,7 +5,6 @@ users:
     fullname: Víctor Cuadrado Juan
     uid: 1001
     gid: 1001
-    password: linux
     shell: /bin/zsh
     email: vic@{{ hostname }}
     user_dir_mode: 755
