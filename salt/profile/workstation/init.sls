@@ -18,6 +18,7 @@ workstation_packages:
       - grep
       - htop
       - silversearcher-ag
+      - dict
 
 include:
   - users.sudo
