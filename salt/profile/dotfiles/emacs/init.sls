@@ -16,7 +16,7 @@ emacs_zshenv_replace_editor:
   file.replace:
     - name: /home/{{ user }}/.zshenv
     - pattern: EDITOR='vim'
-    - repl: EDITOR='emacsclient'
+    - repl: EDITOR="emacsclient -c"
     - backup: False
 
 emacs_zshenv:
