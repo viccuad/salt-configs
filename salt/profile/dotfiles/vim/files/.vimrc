@@ -76,7 +76,6 @@ set autoindent smartindent			" copy indent from current line when starting a new
 " Line wrap {{{
 set wrap							" soft wrap long lines, visually, instead of changing the file
 set linebreak						" wrap long lines at characters in 'breakat' rather than at the last character that fits
-set breakindent						" wrapped lines are visually indented
 let &colorcolumn=join(range(81,250),",") " colors columns past 80
 set textwidth=80
 set formatoptions=tcrql             " t autowrap to textwidth
