@@ -92,10 +92,6 @@ debian_setup_autopkgtest:
       - apt-cacher-ng
       - debci
       - autopkgtest
-  # create lxc containers (needs time):
-  cmd.run:
-    - names:
-      - debci setup
   file.append:
     - name: /etc/sudoers.d/lxc
     - makedirs: True
