@@ -1,3 +1,2 @@
 roles:
   - server
-  - sambaserver
