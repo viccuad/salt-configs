@@ -115,7 +115,7 @@ if has("gui_running")
 	set guiheadroom=0				" vim padding: fix it in ~/.gtkrc-2.0
 	set background=dark 			" if using a dark background, for syntax highlighting
 
-	colorscheme base16-monokai
+	colorscheme xoria256
 	set guioptions-=T				" remove Toolbar
 	set guioptions+=c				" use console dialogs
 	set guioptions-=r				" remove right-hand scrollbar
