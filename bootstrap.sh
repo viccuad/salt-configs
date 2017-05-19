@@ -1,5 +1,6 @@
 #! /usr/bin/env bash
 
+echo "Notice: $0 needs to be run with admin permissions"
 while [[ $# -gt 0 ]]
 do
     key="$1"
@@ -26,19 +27,29 @@ do
     shift # past argument or value
 done
 
-echo "Updating repos.."
-apt-get -y update
+if [[ -r /etc/os-release ]]; then
+    . /etc/os-release
+    if [[ $ID = ubuntu || $ID = debian ]]; then
+        echo "Debian or Ubuntu distribution detected"
 
-echo "Installing dependencies.."
-# install gitpython instead of pygit2 to be able to use gitfs
-# See https://github.com/libgit2/pygit2/issues/644
-# don't override locally installed config files
-apt-get -y -o Dpkg::Options::="--force-confdef" \
-    -o Dpkg::Options::="--force-confold" install git-core python-git salt-minion
+        echo "Updating repos.."
+        apt-get -y update
 
-echo "Disabling salt-minion service.."
-# salt-minion service shouldn't be running, as we have no master:
-systemctl stop salt-minion
-systemctl disable salt-minion
+        echo "Installing dependencies.."
+        # install gitpython instead of pygit2 to be able to use gitfs
+        # See https://github.com/libgit2/pygit2/issues/644
+        # don't override locally installed config files
+        apt-get -y -o Dpkg::Options::="--force-confdef" \
+                -o Dpkg::Options::="--force-confold" install git-core python-git salt-minion
+
+        echo "Disabling salt-minion service.."
+        # salt-minion service shouldn't be running, as we have no master:
+        systemctl stop salt-minion
+        systemctl disable salt-minion
+    fi
+else
+    echo "Not in a distribution with /etc/os-release available"
+    exit
+fi
 
 echo "Done!"
