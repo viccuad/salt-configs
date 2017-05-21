@@ -1,1 +1,2 @@
-# Nothing here yet
+states:
+  profile.desktopenv: true

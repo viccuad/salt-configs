@@ -1,8 +1,6 @@
 include:
   - users.sudo
   - users
-  # For gpg-agent setup:
-  - profile.dotfiles.gnupg
 
 offlinepc-packages:
   pkg.installed:

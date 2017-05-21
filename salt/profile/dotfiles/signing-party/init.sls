@@ -25,7 +25,7 @@ signing-party_recurse_files_caff:
     - include_empty: True
     - exclude_pat: .gitignore
   require:
-    - name: signing-party_recurse_files
+    - sls: signing-party_recurse_files
 
 signing-party_install:
   pkg.installed:

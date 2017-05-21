@@ -1,3 +1,6 @@
+states:
+  profile.common: true
+
 include:
   - ssh_keys.users.viccuad
 

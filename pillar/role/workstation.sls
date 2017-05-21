@@ -1,5 +1,8 @@
 {% set hostname = salt['grains.get']('host') %}
 
+states:
+  profile.workstation: true
+
 users:
   vic:
     fullname: Víctor Cuadrado Juan

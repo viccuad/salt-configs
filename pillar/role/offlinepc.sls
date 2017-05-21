@@ -1,5 +1,9 @@
 {% set hostname = salt['grains.get']('host') %}
 
+states:
+  profile.dotfiles.gnupg: true
+  profile.offlinepc: true
+
 users:
   vic:
     fullname: Víctor Cuadrado Juan

@@ -1,3 +1,7 @@
+include:
+  - users.sudo
+  - users
+
 {% if grains['os_family'] == 'Debian' %}
 workstation_sourceslist:
   file.managed:
@@ -19,8 +23,3 @@ workstation_packages:
       - htop
       - silversearcher-ag
       - dict
-
-include:
-  - users.sudo
-  - users
-  - profile.dotfiles

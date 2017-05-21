@@ -1,6 +1,9 @@
 {% for user, details in pillar.get('users', {}).items() %}
 {% if 'users' in details['groups'] %}
 
+include:
+  - profile.workstation # for the require
+
 emacs_recurse_files:
   file.recurse:
     - name: /home/{{ user }}/
@@ -79,6 +82,8 @@ emacs_install:
       # python layer:
       - apt-get -y install python-pylint-*
       - apt-get -y install python3-pylint-*
+  require:
+    - sls: profile.workstation
 
 emacs_clone_spacemacs:
   git.latest:

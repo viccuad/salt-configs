@@ -107,22 +107,26 @@ $ vagrant up
 
 # "Roles" code pattern #
 
-The code that describes the infrastructure is implementing the following pattern:
+The code that describes the infrastructure follows the pattern:
 
-- Description of the systems' infrastructure:
 
 ```
     []         Ids (identity of the machine. Eg: machine02)
-   [] []       Roles (business logic. Eg: workstation, nas)
- [] [] []      Profiles (Configure whole stack. Eg: dns server)
+   [] []       Roles (business logic. Eg: workstation, nas). Implemented in pillars
+ [] [] []      Profiles (Configure whole stack. Eg: dns server). Implemented in states
 [] [] [] []    Salt formulas (Configure part of the stack. eg: sshd)
 ```
 
-- Data of the infrastructure: separated into the pillars, and salt `files` and
-  `templates` folders
+The targeting is based on pillar contents; the pillars contain a dictionary
+called `states`, with the states to be applied. Since it's a dictionary, it gets
+merged from all the pillars.
 
-This pattern is a best-practices one for Puppet, see [1] and [2].
+For more info, see [4] and [5].
+
+The role pattern is a best-practices one for Puppet, see [1] and [2].
 
 [1]: https://docs.puppet.com/pe/2016.4/r_n_p_intro.html
 [2]: https://puppet.com/presentations/designing-puppet-rolesprofiles-pattern
 [3]:http://viccuad.me/blog/secure-yourself-part-1-airgapped-computer-and-GPG-smartcards
+[4]: http://seedickcode.com/devops/saltstack/saltstack-a-better-salt-top-sls-part-2/
+[5]: https://www.lutro.me/posts/dangers-of-targetting-grains-in-salt
