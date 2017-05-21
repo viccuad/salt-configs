@@ -42,6 +42,9 @@ $CONFIG{'caffhome'}    = $ENV{'HOME'}.'/.caff';
 # Ask to continue before starting the signing (for offline signing).
 # $CONFIG{'ask-sign'}       = 1;
 
+# Forward mails also to myself
+$CONFIG{'bcc'} = 'john@doe.com'; # TODO
+# Mail template to use
 $CONFIG{'mail-template'} = <<'EOM'
 Hi,
 
