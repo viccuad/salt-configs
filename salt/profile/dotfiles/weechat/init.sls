@@ -2,7 +2,7 @@
 {% if 'users' in details['groups'] %}
 
 weechat_recurse_files:
-  file.recurse:
+  file.recurse: # TODO copies files at the end of symlink, bug
     - name: /home/{{ user }}/
     - source: salt://{{ slspath }}/files/
     - user: {{ user }}

@@ -1,10 +1,21 @@
 * TODO file.recurse & file.managed don't do symlinks
   https://github.com/saltstack/salt/issues/39939
   https://github.com/saltstack/salt/issues/5645
+**  this bug seems to be fixed for 2016.3.4, but hitting it on systems that
+    don't have an up-to-date salt-minion version is a pain. This seems like a
+    general problem of salt architecture.. Switch to ansible?
+**  Solution?:
+    file.recurse doesn't copy symlinks, copies the files, even with
+    `keep_symlinks: True`. `rsync.synchronized` doesn't have a `runas:
+    localuser`, so it fails short for my case. `cmd.run: \nrunas: localuser`
+    doesn't work for me. `cmd.run: su - {{ user }} -c "rsync -a {{ slspath }}/files/ /home/{{ user }}/"`
+    doesn't do the trick because of slspath.
 * TODO check all chmod of files
 * DONE append instead of substitute, workaround around bug
   https://github.com/saltstack/salt/issues/25006
 * DONE pillar.get used in pillar/top.sls only works in masterless setups
-  CLOSED: [2017-05-21 dom 08:54]
   https://github.com/saltstack/salt/issues/37893
+  CLOSED: [2017-05-21 dom 08:54]
+**  This triggered the major refactoring, see 170f48c commit message
 * TODO parametrize mail and name
+* TODO fix peppered TODOs throughout
