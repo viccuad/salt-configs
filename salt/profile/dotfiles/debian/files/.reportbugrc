@@ -114,7 +114,7 @@ verify
 # offline
 
 # Default operating mode (novice, standard, advanced, expert)
-mode advanced
+mode expert
 
 # Don't check whether user IDs are outside admin range - root is still checked
 # no-check-uid

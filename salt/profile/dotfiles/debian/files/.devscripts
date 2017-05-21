@@ -106,7 +106,7 @@
 #
 # If set to yes, prompt for confirmation / edit / abandonment.
 # If set to force, spawn an editor and then proceed as if set to yes
-# BTS_INTERACTIVE=no
+BTS_INTERACTIVE= yes
 #
 # Specify a list of e-mail addresses to which a carbon copy of the
 # generated e-mail to the control bot should automatically be sent.
@@ -184,7 +184,7 @@
 # When appending to a multiple-maintainer changelog, if there are
 # existing changes made by the current maintainer, should new
 # changelog entries be appended to the existing entries?
-# DEBCHANGE_MULTIMAINT_MERGE=no
+DEBCHANGE_MULTIMAINT_MERGE=yes
 #
 # When appending entries to the changelog, should the trailer line
 # be maintained as-is?
@@ -257,7 +257,7 @@
 # DEBDIFF_CONTROLFILES=control
 #
 # Show files which have moved between .debs?
-# DEBDIFF_SHOW_MOVED=no
+# DEBDIFF_SHOW_MOVED=yes
 #
 # Option to pass to wdiff
 # DEBDIFF_WDIFF_OPT=
@@ -584,7 +584,7 @@ DEBUILD_LINTIAN_OPTS="-i -I"
 # USCAN_DEHS_OUTPUT=no
 #
 # Should we give verbose output?
-# USCAN_VERBOSE=no
+USCAN_VERBOSE=yes
 #
 # What user agent string should we send with requests?
 # (Default is 'Debian uscan X.Y.Z')
@@ -598,7 +598,7 @@ DEBUILD_LINTIAN_OPTS="-i -I"
 #
 # Use the Files-Excluded field in debian/copyright to determine whether
 # the orig tarball needs to be repacked to remove non-DFSG content?
-# USCAN_EXCLUSION=yes
+USCAN_EXCLUSION=yes
 
 ##### uupdate
 #
