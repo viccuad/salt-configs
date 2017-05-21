@@ -1,7 +1,8 @@
 New incarnation of my dotfiles, on steroids.
 
 This salt configs implement Puppet's "Role" pattern to set up my dotfiles,
-GUIless workstation, laptop setup, desktop environment, offline PC, and more.
+GUIless workstation, laptop setup, desktop environment, offline PC, router with
+Freedombox and more.
 Currently it contains already several hundred(!) states.
 
 

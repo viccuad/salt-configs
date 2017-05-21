@@ -93,6 +93,7 @@ https://github.com/foobacca/dotfiles
 - [ ] Add Snippets for mail
         https://martinralbrecht.wordpress.com/2016/05/30/handling-email-with-emacs/
 - [ ] Fix saving of Drafts
+- [ ] Add little red flag for mbsync, https://github.com/rlue/little_red_flag
 
 
 [1]: https://gandi.net
