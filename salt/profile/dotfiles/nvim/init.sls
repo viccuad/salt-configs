@@ -37,7 +37,7 @@ nvim_install:
   pkg.installed:
     - names:
       - neovim
-      # not present in Stretch:
+      # not present in Stretch: TODO
       # - python-neovim
       # - python-neovim-gui
 

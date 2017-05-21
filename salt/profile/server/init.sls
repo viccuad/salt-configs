@@ -1,9 +1,8 @@
 # TODO fail2ban for sshd
 # TODO firewall only with ssh enabled
+# TODO disable root logins
 
-# disable root logins
-
-server_sourceslist:
+server_sourceslist: # TODO change to stable when stretch releases
   file.managed:
     - name: /etc/apt/sources.list
     - source: salt://{{ slspath }}/templates/sources.list

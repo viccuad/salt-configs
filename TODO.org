@@ -1,0 +1,10 @@
+* TODO file.recurse & file.managed don't do symlinks
+  https://github.com/saltstack/salt/issues/39939
+  https://github.com/saltstack/salt/issues/5645
+* TODO check all chmod of files
+* DONE append instead of substitute, workaround around bug
+  https://github.com/saltstack/salt/issues/25006
+* DONE pillar.get used in pillar/top.sls only works in masterless setups
+  CLOSED: [2017-05-21 dom 08:54]
+  https://github.com/saltstack/salt/issues/37893
+* TODO parametrize mail and name

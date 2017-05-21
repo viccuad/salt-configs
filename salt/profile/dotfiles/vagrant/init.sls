@@ -16,7 +16,6 @@ vagrant_install:
   pkg.installed:
     - names:
       - vagrant
-      # - dnsmasq
       - bridge-utils
       - vagrant-lxc
     - require:

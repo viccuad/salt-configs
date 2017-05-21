@@ -64,7 +64,7 @@ emacs_install:
       - shellcheck
       - python3-bashate
       # python layer:
-        # - flake8 using pylint instead, because it is broken for now
+        # - flake8 using pylint instead, because it is broken for now TODO
       - pylint
       - pylint3
       - python-jedi
@@ -74,7 +74,7 @@ emacs_install:
       - hy
       - yapf
       - yapf3
-      # - autoflake missing in Debian
+      # - autoflake missing in Debian TODO
       # latex layer:
       - pandoc
   cmd.run:
