@@ -1,4 +1,4 @@
-# reportbug preferences file
+# Reportbug preferences file
 # character encoding: UTF-8
 # Example configuration file for reportbug is in /etc/reportbuf.conf
 #
@@ -88,7 +88,7 @@ smtphost reportbug.debian.org
 
 # User interface: text, urwid or gtk2
 # querybts and reportbug will use this setting
-ui gtk2
+ui urwid
 
 # Editor
 # Commented: let it use $EDITOR env var

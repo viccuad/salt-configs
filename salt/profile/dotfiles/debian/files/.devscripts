@@ -584,7 +584,7 @@ DEBUILD_LINTIAN_OPTS="-i -I"
 # USCAN_DEHS_OUTPUT=no
 #
 # Should we give verbose output?
-USCAN_VERBOSE=yes
+# USCAN_VERBOSE=yes
 #
 # What user agent string should we send with requests?
 # (Default is 'Debian uscan X.Y.Z')
@@ -598,7 +598,7 @@ USCAN_VERBOSE=yes
 #
 # Use the Files-Excluded field in debian/copyright to determine whether
 # the orig tarball needs to be repacked to remove non-DFSG content?
-USCAN_EXCLUSION=yes
+# USCAN_EXCLUSION=yes
 
 ##### uupdate
 #
