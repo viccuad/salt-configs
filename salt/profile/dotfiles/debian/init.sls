@@ -47,6 +47,7 @@ debian_zshaliases:
             alias dquilt="quilt --quiltrc=${HOME}/.quiltrc-dpkg"
             alias rebuild="${HOME}/debian/reproducible-misc/prebuilder/rebuild.sh -b ${HOME}/pbuilder/sid-amd64-base-reproducible.tgz"
             alias wrap-and-sort='wrap-and-sort -ast'
+            alias pbuilder="sudo -E pbuilder"
 
 debian_install:
   pkg.installed:

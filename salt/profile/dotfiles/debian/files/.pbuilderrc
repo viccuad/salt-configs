@@ -88,7 +88,7 @@ BUILDRESULT="$BASEDIR/$NAME/result/"
 APTCACHE="$BASEDIR/$NAME/aptcache/"
 BUILDPLACE="$BASEDIR/build/"
 # BINDMOUNTS="$BASEDIR/archive"
-HOOKDIR="$BASEDIR/hooks"
+HOOKDIR="/usr/lib/pbuilder/hooks"
 
 if $(echo ${DEBIAN_SUITES[@]} | grep -q $DIST); then
     # Debian configuration
