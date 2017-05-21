@@ -1,6 +1,6 @@
 pillar_safe_render_error: False
 
-state_aggregate: True
+# state_aggregate: True # messes with state order
 
 ## Look locally for files
 file_client: local
