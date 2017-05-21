@@ -47,6 +47,15 @@ if [[ -r /etc/os-release ]]; then
         systemctl stop salt-minion
         systemctl disable salt-minion
     fi
+    if [[ $ID = opensuse ]]; then
+        echo "Opensuse distribution detected"
+
+        echo "Updating repos.."
+        zypper update -y
+
+        echo "Installing dependencies.."
+        zypper in -y git-core python-GitPython salt-minion
+    fi
 else
     echo "Not in a distribution with /etc/os-release available"
     exit

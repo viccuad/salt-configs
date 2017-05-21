@@ -19,6 +19,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   hostnames.each do |name|
     config.vm.define "#{name}" do |system|
       system.vm.box = "stretch"
+      # system.vm.box = "opensuse/openSUSE-42.2-x86_64"
       system.vm.host_name = "#{name}"
       system.vm.synced_folder "salt/", "/srv/salt"
       system.vm.synced_folder "pillar/", "/srv/pillar"

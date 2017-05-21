@@ -1,3 +1,5 @@
+{% if grains['os_family'] == 'Debian' %}
+
 {% for user, details in pillar.get('users', {}).items() %}
 {% if 'users' in details['groups'] %}
 
@@ -108,3 +110,5 @@ gnupg_restore_publickey:
 
 {% endif %}
 {% endfor %}
+
+{% endif %}

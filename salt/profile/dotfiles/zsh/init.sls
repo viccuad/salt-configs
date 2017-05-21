@@ -11,6 +11,7 @@ zsh_recurse_files:
     - dir_mode: 755
     - include_empty: True
     - exclude_pat: .gitignore
+    # - template: jinja cannot be activated, because a zsh file contains {}
     - require:
         - pkg: git # for git-prompt
 

@@ -16,6 +16,7 @@ weechat_recurse_files:
 weechat_install:
   pkg.installed:
     - names:
+{% if grains['os_family'] == 'Debian' %}
       - weechat
       - weechat-plugins
       - weechat-scripts
@@ -24,6 +25,17 @@ weechat_install:
       - lua-cjson
       # for notifications:
       - libnotify-bin
+{% elif grains['osrelease'] == '42.2' %}
+      - weechat
+      - weechat-aspell
+      - weechat-lang
+      - weechat-lua
+      - weechat-perl
+      - weechat-python
+      - weechat-ruby
+      - weechat-tcl
+      - libnotify4
+{% endif %}
 
 weechat_enable_logrotate:
   file.symlink:

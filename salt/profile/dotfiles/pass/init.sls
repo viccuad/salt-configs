@@ -11,9 +11,14 @@ pass_zshaliases:
 pass_install:
   pkg.installed:
     - names:
+{% if grains['os_family'] == 'Debian' %}
       - pass
       - suckless-tools
       - xdotool
+{% elif grains['osrelease'] == '42.2' %}
+      - password-store
+      - password-store-dmenu
+{% endif %}
 
 {% endif %}
 {% endfor %}

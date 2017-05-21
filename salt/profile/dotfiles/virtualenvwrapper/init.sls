@@ -17,7 +17,11 @@ virtualenv_zshrc:
     - name: /home/{{ user }}/.zshrc
     - text: |
             # virtualenvwrapper:
+{% if grains['os_family'] == 'Debian' %}
             source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
+{% elif grains['osrelease'] == '42.2' %}
+            /usr/bin/virtualenvwrapper.sh
+{% endif %}
 
 virtualenv_zshaliases:
   file.append:
@@ -30,7 +34,11 @@ virtualenv_zshaliases:
 virtualenv_install:
   pkg.installed:
     - names:
+{% if grains['os_family'] == 'Debian' %}
       - virtualenvwrapper
+{% elif grains['osrelease'] == '42.2' %}
+      - python-virtualenvwrapper
+{% endif %}
 
 {% endif %}
 {% endfor %}
