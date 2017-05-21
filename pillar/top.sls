@@ -7,3 +7,6 @@ base:
     - role.server
   'anofflinepc':
     - role.offlinepc
+  'arouter':
+    - role.server
+    - role.freedombox

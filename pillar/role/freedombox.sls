@@ -1,0 +1,2 @@
+states:
+  profile.freedombox: true
