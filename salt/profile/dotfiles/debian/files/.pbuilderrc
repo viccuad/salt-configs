@@ -1,10 +1,12 @@
+# pbuilder defaults; edit /etc/pbuilderrc to override these and see
+# pbuilderrc.5 for documentation
+#
 # Usage:
 # `pdebuild` or `pbuilder` : for default codename, namely unstable
 # `DIST=codename pdebuild` or `DIST=codename pbuilder` : for selected codename
 # (configure sudoers or use `sudo -E` to preserve the environment and make
 # pbuilder use $BASEDIR and this pbuilderrc).
 # For building packages for experimental, prepend DIST=experimental
-
 
 # Set how much output you want from pbuilder, valid values are
 # E => errors only
@@ -13,7 +15,7 @@
 # D => all of the above and debug messages
 LOGLEVEL=I
 
-BASEDIR="$HOME/pbuilder"
+BASEDIR="/var/cache/pbuilder"
 
 # Codenames for Debian suites according to their alias. Update these when
 # needed.
@@ -26,9 +28,6 @@ STABLE_BACKPORTS_SUITE="$STABLE_CODENAME-backports"
 # List of Debian suites.
 DEBIAN_SUITES=($EXPERIMENTAL_CODENAME $UNSTABLE_CODENAME $TESTING_CODENAME $STABLE_CODENAME
     "experimental" "unstable" "testing" "stable")
-
-# Mirrors to use. Update these to your preferred mirror.
-DEBIAN_MIRROR="httpredir.debian.org"
 
 # Optionally use the changelog of a package to determine the suite to use if
 # none set.
@@ -82,17 +81,18 @@ BASETGZ="$BASEDIR/$NAME-base.tgz"
 #     BASETGZ="$BASEDIR/$NAME-base.tgz"
 # fi
 # Optionally, set BASEPATH (and not BASETGZ) if using cowbuilder
-# BASEPATH="/var/cache/pbuilder/$NAME/base.cow/"
+# BASEPATH="/var/cache/pbuilder/$NAME/base.cow/" #default of cowbuilder
+BASEPATH="/var/cache/pbuilder/base-$NAME.cow/"   # default of git-buildpackage # TODO doesnt work
 DISTRIBUTION="$DIST"
-BUILDRESULT="$BASEDIR/$NAME/result"
-APTCACHE="$BASEDIR/aptcache/$NAME"
-BUILDPLACE="$BASEDIR/build"
+BUILDRESULT="$BASEDIR/$NAME/result/"
+APTCACHE="$BASEDIR/$NAME/aptcache/"
+BUILDPLACE="$BASEDIR/build/"
 # BINDMOUNTS="$BASEDIR/archive"
 HOOKDIR="$BASEDIR/hooks"
 
 if $(echo ${DEBIAN_SUITES[@]} | grep -q $DIST); then
     # Debian configuration
-    MIRRORSITE="http://$DEBIAN_MIRROR/debian/"
+    MIRRORSITE=http://httpredir.debian.org/debian
     COMPONENTS="main contrib non-free"
     DEBOOTSTRAPOPTS=("${DEBOOTSTRAPOPTS[@]}" "--keyring=/usr/share/keyrings/debian-archive-keyring.gpg")
     # Local dependencies
@@ -105,19 +105,20 @@ else
     exit 1
 fi
 
-# EXTRAPACKAGES="ccache libeatmydata1"
 # Optional customization {{{
+EXTRAPACKAGES="ccache eatmydata"
+
 # enable use libeatmydata1 for pbuilder:
-#export LD_PRELOAD=${LD_PRELOAD+$LD_PRELOAD:}libeatmydata.so
+# EXTRAPACKAGES=eatmydata
+EATMYDATA=yes
+# export LD_PRELOAD=${LD_PRELOAD:+$LDPRELOAD:}libeatmydata.so
 
 # enable ccache for pbuilder:
-#export PATH="/usr/lib/ccache${PATH+:$PATH}"
-#export CCACHE_DIR="/var/cache/pbuilder/ccache"
-#BINDMOUNTS="${CCACHE_DIR}"
+export CCACHE_DIR="/var/cache/pbuilder/ccache"
 
 # parallel make
 #DEBBUILDOPTS=-j8
-# }}}
 
 # always be verbose:
 DH_VERBOSE=1
+# }}}

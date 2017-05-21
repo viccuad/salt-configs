@@ -13,6 +13,17 @@ debian_recurse_files:
     - source: salt://{{ slspath }}/files/
     - user: {{ user }}
     - group: {{ user }}
+    - dir_mode: 755
+    - include_empty: True
+    - exclude_pat: .gitignore
+    - keep_symlinks: True
+
+debian_recurse_files_pbuilder:
+  file.recurse:
+    - name: /
+    - source: salt://{{ slspath }}/pbuilder/
+    - user: root
+    - group: root
     - file_mode: keep # for pbuilder hooks
     - dir_mode: 755
     - include_empty: True
@@ -71,6 +82,9 @@ debian_install:
       - patch
       - patchutils
       - pbuilder
+      - cowbuilder
+      - ccache
+      - eatmydata
       - quilt
       - xutils-dev
       - diffoscope
