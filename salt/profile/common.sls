@@ -10,3 +10,4 @@ common_packages:
       - vim
       - htop
       - git
+      - popularity-contest
