@@ -1,3 +1,5 @@
+-*- mode: org -*-
+
 * TODO file.recurse & file.managed don't do symlinks
   https://github.com/saltstack/salt/issues/39939
   https://github.com/saltstack/salt/issues/5645
