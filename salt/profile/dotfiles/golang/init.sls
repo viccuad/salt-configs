@@ -23,10 +23,15 @@ golang_install:
   # deps that aren't packaged yet:
   cmd.run:
     - names:
+      - go get -u -v github.com/golang/lint/golint
       - go get -u -v github.com/rogpeppe/godef
       - go get -u -v golang.org/x/tools/cmd/guru
       - go get -u -v golang.org/x/tools/cmd/gorename
       - go get -u -v golang.org/x/tools/cmd/goimports
+      - go get -u -v golang.org/x/tools/cmd/godoc
+      - go get -u -v github.com/kisielk/errcheck
+      - go get -u -v github.com/mdempsky/unconvert
+      - go get -u -v github.com/alecthomas/gometalinter && gometalinter --install --update
     - runas: {{ user }}
     - env:
       - GOPATH: '/home/{{ user }}//code/go'
