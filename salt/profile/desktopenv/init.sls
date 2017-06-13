@@ -9,6 +9,8 @@ desktopenv_install:
     - names:
       - emacs25 # gui
       - gnome
+      - fwupd
+      - gnome-software-plugin-flatpak
       - firefox-esr
       - xul-ext-ublock-origin
       - xul-ext-https-everywhere
