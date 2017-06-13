@@ -29,6 +29,9 @@ debian_recurse_files_pbuilder:
     - include_empty: True
     - exclude_pat: .gitignore
     - keep_symlinks: True
+  # TODO set up results so I can write into that folder, so when I upload with
+  # dput, dput can write the output of the upload
+  # either at home or in /var/cache/
 
 debian_zshenv:
   file.append:
