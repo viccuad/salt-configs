@@ -4,13 +4,24 @@ include:
 
 offlinepc-packages:
   pkg.installed:
-    - name: paperkey
-    - name: qrencode
-    - name: python-yubico
-    - name: python-yubico-tools
-    - name: yubikey-personalization
-    # - name: pcsd TODO
-    - name: scdaemon
-    - name: gpgsm
-    - name: cryptsetup
-    - name: libpam-mount
+    - names:
+      # For console and keyboard configuration:
+      - console-data
+      - keyboard-configuration
+      # For checking GPG keys:
+      - hopenpgp-tools # as of now, not yet on armhf
+      # For backing up the keys:
+      - paperkey
+      - qrencode
+      # For using and configuring the Yubikey:
+      - python-yubico
+      - python-yubico-tools
+      - yubikey-personalization
+      # For smartcards:
+      - pcscd
+      - scdaemon
+      - pcsc-tools
+      - gpgsm
+      # For encrypted filesystems:
+      - cryptsetup
+      - libpam-mount
