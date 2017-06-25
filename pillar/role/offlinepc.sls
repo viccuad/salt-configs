@@ -1,8 +1,9 @@
 {% set hostname = salt['grains.get']('host') %}
 
 states:
-  profile.dotfiles.gnupg: true
   profile.offlinepc: true
+  profile.dotfiles.gnupg: true
+  profile.dotfiles.signing-party: true
 
 users:
   vic:
