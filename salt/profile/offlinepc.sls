@@ -9,7 +9,7 @@ offlinepc-packages:
       - console-data
       - keyboard-configuration
       # For checking GPG keys:
-      - hopenpgp-tools # as of now, not yet on armhf
+      - hopenpgp-tools
       # For backing up the keys:
       - paperkey
       - qrencode
