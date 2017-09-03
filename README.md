@@ -1,3 +1,9 @@
+# ABANDONED IN FAVOUR OF
+# https://github.com/viccuad/ansible-configs
+
+--------
+
+
 New incarnation of my dotfiles, on steroids.
 
 This salt configs implement Puppet's "Role" pattern to set up my dotfiles,
